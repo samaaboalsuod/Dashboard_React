@@ -1,0 +1,29 @@
+.overviewCard{
+    width: 32%;
+    padding: 1rem;
+    border-radius: 8px;
+
+    border: 2px solid #F1D6FF;
+    box-shadow: 0 0 4px 0 rgba(136, 18, 139, 0.10);
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.leftSide{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.number{
+    font-size: 4.5rem;
+    font-weight: 500;
+    color: var(--dark_Purple);
+}
+
+.numAndp{
+    display: flex;
+    flex-direction: column;
+    gap: 0rem;
+}

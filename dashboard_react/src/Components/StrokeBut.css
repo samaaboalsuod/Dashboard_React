@@ -12,5 +12,15 @@ button{
     gap: .5rem;
     align-items: center;
     justify-content: center;
+
+        transition: 
+        background-color 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease;
 }
 
+.strokebut:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+    border-color: #b5b5b5;
+    transform: translateY(-2px);
+}

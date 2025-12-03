@@ -4,6 +4,8 @@ import './Home.css'
 import Nav from '../Components/Nav';
 import SideBar from '../Components/SideBar';
 import StrokeBut from '../Components/StrokeBut';
+import BigCardTitle from '../Components/BigCardTitle';
+import OverviewCard from '../Components/OverviewCard';
 
 import DashIcon from '../Assets/dashIcon.svg'
 import MailIcon from '../Assets/mailIcon.svg'
@@ -15,6 +17,15 @@ import MessageIcon from '../Assets/messIcon.svg'
 import SettingIcon from '../Assets/settIcon.svg'
 import addIcon from '../Assets/add.svg'
 import editIcon from '../Assets/edit.svg'
+
+import projectsCardIcon from '../Assets/projectsCardIcon.svg'
+import UXcardIcon from '../Assets/UXcardIcon.svg'
+import FrontCardIcon from '../Assets/FrontCardIcon.svg'
+import GraphicCardIcon from '../Assets/GraphicCardIcon.svg'
+import DCardIcon from '../Assets/3DCardIcon.svg'
+import PhotoCardIcon from '../Assets/PhotoCardIcon.svg'
+
+
 
 const Home = () => {
     return ( <>
@@ -46,7 +57,28 @@ const Home = () => {
                 <StrokeBut  strokeButIcon={editIcon}  strokeButText="Edit Categories" />
             </div>
 
-            <div className='AllContent'></div>
+            <div className='AllContent'>
+
+                <div className='sec1'>
+
+                    <BigCardTitle title="Projects Overview" />
+
+                    <div className='overCardsCont'>
+
+                        <OverviewCard title="Total Projects" number="24" percentage="+12%" icon={projectsCardIcon} color="#FBF3FF" />
+                        <OverviewCard title="UI/UX Design" number="10" percentage="50% of total" icon={UXcardIcon} color="#FFF3F8" />
+                        <OverviewCard title="Front End" number="4" percentage="20% of total" icon={FrontCardIcon} color="#F4F3FF" />
+                        <OverviewCard title="Graphic Design" number="3" percentage="10% of total" icon={GraphicCardIcon} color="#F3FBFF" />
+                        <OverviewCard title="3D Modeling" number="3" percentage="12% of total" icon={DCardIcon} color="#F3FFF4" />
+                        <OverviewCard title="Photography" number="9" percentage="20% of total" icon={PhotoCardIcon} color="#FEFFF3" />
+
+                    </div>
+                </div>
+
+
+
+            </div>
+
         </div>
 
     </section>

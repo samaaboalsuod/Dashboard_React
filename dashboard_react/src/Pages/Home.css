@@ -31,14 +31,28 @@ h4{
     color: var(--dark_Purple);
 
     font-weight: 500;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
+}
+
+h5{
+    color: var(--dark_Purple);
+
+    font-weight: 500;
+    font-size: 1.2rem;
 }
 
 h6{
     color: var(--dark_Purple);
 
-    font-weight: 300;
+    font-weight: 400;
     font-size: 1rem;
+}
+
+p{
+    color: var(--Grey);
+
+    font-weight: 400;
+    font-size: 1.2rem;
 }
 
 header{
@@ -82,7 +96,6 @@ header{
     justify-content: flex-start;
     align-items: center;
 
-    /* background-color: rgba(0, 255, 255, 0.343); */
 }
 
 .AllContent{
@@ -90,5 +103,36 @@ header{
     height: 100vh;
     border-radius: 8px;
     background-color: var(--cards_bg);
+    padding: 1.5rem 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.sec1{
+    width: 96%;
+    /* height: 40%; */
+    padding: 1rem;
+
+    border-radius: 8px;
+    border: 1px solid  #F1D6FF;
+    box-shadow: 0 0 4px 0 rgba(136, 18, 139, 0.10);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.overCardsCont{
+    width: 100%;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
 }
 
