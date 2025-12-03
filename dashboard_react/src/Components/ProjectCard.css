@@ -1,0 +1,90 @@
+ .project-card {
+          display: grid;
+          grid-template-columns: 120px 140px 80px 1.4fr 140px;
+          align-items: center;
+          gap: 20px;
+          padding: 25px 30px;
+          border-radius: 8px;
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .project-card:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        /* .project-card__title h2 {
+          font-size: 20px;
+          font-weight: 600;
+          color: #5b21b6;
+          margin: 0;
+          white-space: nowrap;
+        } */
+
+        /* .project-card__description p {
+          font-size: 16px;
+          color: #1f2937;
+          margin: 0;
+          white-space: nowrap;
+        } */
+
+        .project-card__date span {
+          font-size: 15px;
+          color: #6b7280;
+          white-space: nowrap;
+        }
+
+        .project-card__tags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          align-items: center;
+        }
+
+        .tag {
+          display: inline-block;
+          padding: 6px 16px;
+          background-color: transparent;
+          border: 1px solid #d1d5db;
+          border-radius: 20px;
+          font-size: 1rem;
+          color: var(--Grey);
+          white-space: nowrap;
+        }
+
+        .project-card__action {
+          display: flex;
+          justify-content: flex-end;
+        }
+
+        /* .continue-button {
+          padding: 12px 32px;
+          background-color: #7c3aed;
+          color: white;
+          border: none;
+          border-radius: 8px;
+          font-size: 15px;
+          font-weight: 500;
+          cursor: pointer;
+          transition: background-color 0.2s ease;
+          white-space: nowrap;
+        } */
+
+        .continue-button:hover {
+          background-color: #6d28d9;
+        }
+
+        .continue-button:active {
+          transform: scale(0.98);
+        }
+
+        @media (max-width: 1024px) {
+          .project-card {
+            grid-template-columns: 1fr;
+            gap: 15px;
+          }
+
+          .project-card__action {
+            justify-content: flex-start;
+          }
+        }

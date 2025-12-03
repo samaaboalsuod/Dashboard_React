@@ -6,6 +6,7 @@ import SideBar from '../Components/SideBar';
 import StrokeBut from '../Components/StrokeBut';
 import BigCardTitle from '../Components/BigCardTitle';
 import OverviewCard from '../Components/OverviewCard';
+import ProjectCard from '../Components/ProjectCard';
 
 import DashIcon from '../Assets/dashIcon.svg'
 import MailIcon from '../Assets/mailIcon.svg'
@@ -24,6 +25,7 @@ import FrontCardIcon from '../Assets/FrontCardIcon.svg'
 import GraphicCardIcon from '../Assets/GraphicCardIcon.svg'
 import DCardIcon from '../Assets/3DCardIcon.svg'
 import PhotoCardIcon from '../Assets/PhotoCardIcon.svg'
+
 
 
 
@@ -61,6 +63,8 @@ const Home = () => {
 
                 <div className='sec1'>
 
+                    <div className='column'>
+
                     <BigCardTitle title="Projects Overview" />
 
                     <div className='overCardsCont'>
@@ -73,7 +77,60 @@ const Home = () => {
                         <OverviewCard title="Photography" number="9" percentage="20% of total" icon={PhotoCardIcon} color="#FEFFF3" />
 
                     </div>
+
+                    </div>
+
+                    <div className='column'>
+
+                       <BigCardTitle title="Drafted Projects" />
+
+                       <div className='draftCont'>
+
+                            <ProjectCard
+                               title="Giza Zoo"
+                               description="UI/UX Design"
+                               date="21/09/2025"
+                               tags={['Tags', 'Date', 'Goal Statement', 'Arabic Font', 'Description']}
+                               bgColor="#FFF3F8"
+                               onContinue={() => console.log('Giza Zoo')}
+                            />
+
+                            <ProjectCard
+                               title="Pyramids of Giza"
+                               description="Photography"
+                               date="14/11/2024"
+                               tags={['Place', 'Shutter', 'Description']}
+                               bgColor="#FEFFF3"
+                               onContinue={() => console.log('Giza Zoo')}
+                            />
+
+                            <ProjectCard
+                               title="Fruit Painting"
+                               description="Graphic Design"
+                               date="21/09/2025"
+                               tags={['Tools', 'Date', 'Project Media', 'Hero Media']}
+                               bgColor="#F3FBFF"
+                               onContinue={() => console.log('Giza Zoo')}
+                            />
+                       </div>
+
+
+                    </div>
+
                 </div>
+
+                <div className='sec1'>
+
+                    <div className='column'>
+
+                    <BigCardTitle title="Recant added projects" />
+
+
+                    </div>
+
+                </div>
+
+
 
 
 
