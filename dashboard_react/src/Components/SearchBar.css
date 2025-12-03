@@ -1,0 +1,25 @@
+
+.searchBar{
+    width: 25vw;
+    padding: 1rem;
+    background-color: var(--fields_Bg);
+    border-radius: 4px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: .5rem;
+}
+
+.searchInput {
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 14px;  /* match your h6 style */
+    color: inherit;   /* keep font color */
+    width: 100%;      /* make it expand naturally */
+  }
+  
+  .searchInput::placeholder {
+    color: var(--placeHolder); /* or your placeholder color */
+  }

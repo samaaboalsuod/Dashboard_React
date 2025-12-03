@@ -1,0 +1,46 @@
+
+nav{
+    width: 90%;
+    height: 6vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logoPart{
+    width: 150px;
+    max-width: 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    /* background-color: aqua; */
+}
+
+.logo{
+    width: 30%;
+}
+
+.pageTitle{
+    max-width: 30vw;
+    /* background-color: rgba(0, 255, 255, 0.21); */
+}
+
+.navIconCont{
+    max-width: 300px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+
+    /* background-color: aqua; */
+}
+
+.navHalf{
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 4rem;
+}
