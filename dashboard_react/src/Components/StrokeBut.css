@@ -1,0 +1,16 @@
+button{
+    all: unset;
+}
+
+.strokebut{
+    width: fit-content;
+    padding: .5rem 1rem;
+    border: 1px solid var(--Grey);
+    border-radius: 4px;
+
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+    justify-content: center;
+}
+

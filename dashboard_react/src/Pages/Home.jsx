@@ -3,6 +3,7 @@ import './Home.css'
 
 import Nav from '../Components/Nav';
 import SideBar from '../Components/SideBar';
+import StrokeBut from '../Components/StrokeBut';
 
 import DashIcon from '../Assets/dashIcon.svg'
 import MailIcon from '../Assets/mailIcon.svg'
@@ -12,6 +13,8 @@ import CalendarIcon from '../Assets/calIcon.svg'
 import profileIcon from '../Assets/proIcon.svg'
 import MessageIcon from '../Assets/messIcon.svg'
 import SettingIcon from '../Assets/settIcon.svg'
+import addIcon from '../Assets/add.svg'
+import editIcon from '../Assets/edit.svg'
 
 const Home = () => {
     return ( <>
@@ -36,7 +39,15 @@ const Home = () => {
 
         </div>
 
-        <div className='contentArea'></div>
+        <div className='contentArea'>
+
+            <div className='toptwobut'>
+                <StrokeBut  strokeButIcon={addIcon}  strokeButText="Add a new Project" />
+                <StrokeBut  strokeButIcon={editIcon}  strokeButText="Edit Categories" />
+            </div>
+
+            <div className='AllContent'></div>
+        </div>
 
     </section>
     
