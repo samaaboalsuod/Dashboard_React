@@ -28,6 +28,8 @@ import DCardIcon from '../Assets/3DCardIcon.svg'
 import PhotoCardIcon from '../Assets/PhotoCardIcon.svg'
 import placeHoldImg from '../Assets/placeHoldImg.jpg';
 import chart1 from '../Assets/chart1.svg';
+import WorldMap from '../Assets/WorldMap.svg';
+import ProgressBar from '../Components/ProgressBar';
 
 
 
@@ -155,6 +157,42 @@ const Home = () => {
                         <div className='chart1'>
                           <img src={chart1} alt="" />
                         </div>
+                    </div>
+
+                    <div className='column'>
+
+                        <BigCardTitle title="Users by country" />
+
+                        <div className='mapSecCont'>
+
+                            <div className='mapDataSec'>
+
+                                <div className='mapTitle'>
+
+                                    <h2>12.4 K</h2>
+
+                                    <div className='greenPer'>
+                                        <div>28.5%</div>
+                                    </div>
+
+                                </div>
+
+                                <div className='progressBarsCont'>
+                                    <ProgressBar country="United States" percentage={40} color="#FF6384" />
+                                    <ProgressBar country="Germany" percentage={25} color="#36A2EB" />
+                                    <ProgressBar country="Australia" percentage={15} color="#FFCE56" />
+                                    <ProgressBar country="United Kingdom" percentage={10} color="#4BC0C0" />
+                                    <ProgressBar country="Italy" percentage={5} color="#9966FF" />
+                                </div>
+
+                            </div>
+
+                            <div className='worldMap'>
+                                <img src={WorldMap} alt="World Map" />
+                            </div>
+
+                        </div>
+
                     </div>
                 </div>
 

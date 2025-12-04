@@ -1,0 +1,39 @@
+.progressBarContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.countryName {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #4A0C77; /* deep purple */
+}
+
+.progressWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.progressTrack {
+  flex: 1;
+  height: 8px;
+  background-color: #b3a2b9; /* light grey-purple */
+  border-radius: 4px;
+  overflow: hidden;
+  margin-right: 1rem;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+.percentageText {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #4A0C77;
+}
