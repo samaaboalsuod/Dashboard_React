@@ -43,18 +43,6 @@
           justify-content: flex-end;
         }
 
-        /* .continue-button {
-          padding: 12px 32px;
-          background-color: #7c3aed;
-          color: white;
-          border: none;
-          border-radius: 8px;
-          font-size: 15px;
-          font-weight: 500;
-          cursor: pointer;
-          transition: background-color 0.2s ease;
-          white-space: nowrap;
-        } */
 
         .continue-button:hover {
           background-color: #6d28d9;

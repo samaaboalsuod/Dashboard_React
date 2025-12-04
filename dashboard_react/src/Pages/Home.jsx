@@ -27,6 +27,7 @@ import GraphicCardIcon from '../Assets/GraphicCardIcon.svg'
 import DCardIcon from '../Assets/3DCardIcon.svg'
 import PhotoCardIcon from '../Assets/PhotoCardIcon.svg'
 import placeHoldImg from '../Assets/placeHoldImg.jpg';
+import chart1 from '../Assets/chart1.svg';
 
 
 
@@ -127,7 +128,7 @@ const Home = () => {
 
                     <div className='column'>
 
-                       <BigCardTitle title="Recant added projects" />
+                       <BigCardTitle title="Recent added projects" />
 
                        <div className='overCardsCont'>
 
@@ -140,6 +141,21 @@ const Home = () => {
 
                     </div>
 
+                </div>
+
+                <div className='sec1'>
+                    <div className='column'>
+
+                        <div className='chartDataCol'>
+                            <h5>Visitors Numbers</h5>
+                            <div className='number'>1120</div>
+                            <p>40% more than last month</p>
+                        </div>
+
+                        <div className='chart1'>
+                          <img src={chart1} alt="" />
+                        </div>
+                    </div>
                 </div>
 
 
