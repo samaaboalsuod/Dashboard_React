@@ -7,6 +7,7 @@ import StrokeBut from '../Components/StrokeBut';
 import BigCardTitle from '../Components/BigCardTitle';
 import OverviewCard from '../Components/OverviewCard';
 import ProjectCard from '../Components/ProjectCard';
+import RecentCard from '../Components/RecentCard';
 
 import DashIcon from '../Assets/dashIcon.svg'
 import MailIcon from '../Assets/mailIcon.svg'
@@ -25,6 +26,9 @@ import FrontCardIcon from '../Assets/FrontCardIcon.svg'
 import GraphicCardIcon from '../Assets/GraphicCardIcon.svg'
 import DCardIcon from '../Assets/3DCardIcon.svg'
 import PhotoCardIcon from '../Assets/PhotoCardIcon.svg'
+import placeHoldImg from '../Assets/placeHoldImg.jpg';
+
+
 
 
 
@@ -123,8 +127,16 @@ const Home = () => {
 
                     <div className='column'>
 
-                    <BigCardTitle title="Recant added projects" />
+                       <BigCardTitle title="Recant added projects" />
 
+                       <div className='overCardsCont'>
+
+                          <RecentCard image={placeHoldImg} title="Ummah Game App"  category="UI/UX Design"  time="03/04/2025" />
+                          <RecentCard image={placeHoldImg} title="Covertina Brand Manual"  category="Graphic Design"  time="05/10/2025" />
+                          <RecentCard image={placeHoldImg} title="Robot"  category="3D Modeling"  time="08/15/2025" />
+
+
+                       </div>
 
                     </div>
 

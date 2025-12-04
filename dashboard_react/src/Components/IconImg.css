@@ -1,0 +1,19 @@
+.strokeICon{
+
+    width: 40px;
+    height: 40px;
+
+    border-radius: 4px;
+
+    border: 1px solid var(--Grey);
+    background-color: transparent;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.strokeICon img{
+    width: 18px;
+}

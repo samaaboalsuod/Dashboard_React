@@ -13,20 +13,6 @@
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
 
-        /* .project-card__title h2 {
-          font-size: 20px;
-          font-weight: 600;
-          color: #5b21b6;
-          margin: 0;
-          white-space: nowrap;
-        } */
-
-        /* .project-card__description p {
-          font-size: 16px;
-          color: #1f2937;
-          margin: 0;
-          white-space: nowrap;
-        } */
 
         .project-card__date span {
           font-size: 15px;

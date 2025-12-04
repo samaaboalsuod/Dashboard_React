@@ -1,0 +1,50 @@
+.recentCardCont{
+    width: 32%;
+    max-width: 50%;
+    padding: 1rem;
+
+    border-radius: 8px;
+    border: 1px solid  #F1D6FF;
+    box-shadow: 0 0 4px 0 rgba(136, 18, 139, 0.10);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1rem;
+
+     transition: all 0.2s ease;
+}
+
+.recentCardCont:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(136, 18, 139, 0.15);
+}
+
+.recentCardCont img {
+    width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+
+.recentData{
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    gap: .5rem;
+}
+
+.iconRow{
+    width: 60%;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    gap: .5rem;
+}
