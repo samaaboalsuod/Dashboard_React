@@ -1,0 +1,124 @@
+.tableCard {
+  width: 100%;
+
+  align-items: center;
+  gap: 16px;
+
+  padding: 18px 20px;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+
+    display: grid;
+  grid-template-columns:
+    minmax(160px, 220px)  /* title */
+    1fr                   /* subtitle */
+    minmax(200px, 360px)  /* middle text / count */
+    minmax(100px, 140px)  /* date */
+    minmax(120px, 180px); /* actions */
+}
+
+.tableCard.grey {
+  background: #f3eef6;
+}
+.tableCard.transparent {
+  background: transparent;
+}
+
+.col {
+  display: flex;
+  align-items: center;
+}
+
+/* 1. Title column */
+.titleCol .titleText {
+  margin: 0;
+  color: #4a0b7a;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* 2. Subtitle column - single line */
+.subtitleCol .subtitleText {
+  margin: 0;
+  color: #9b9b9b;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 3. Middle column: subject (text) or count badge */
+.middleCol { justify-content: flex-start; }
+.middleText {
+  margin: 0;
+  color: #4a0b7a;
+  font-weight: 500;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* count badge */
+.countBadge {
+  display: inline-flex;
+  min-width: 36px;
+  height: 36px;
+  padding: 0 10px;
+  background: #7a1fa2;
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 600;
+  align-items:center;
+  justify-content:center;
+  font-size: 0.95rem;
+}
+
+/* 4. Date column */
+.dateCol { justify-content: flex-end; }
+.dateText {
+  color: #8a8a8a;
+  font-size: 0.95rem;
+}
+
+/* 5. Actions column */
+.actionsCol {
+  justify-content: flex-end;
+  gap: 14px;
+}
+
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.statusBadge.new { background: #7a1fa2; color: #fff; }
+.statusBadge.read { background: #e9e1f0; color: #4a0b7a; }
+
+.iconsWrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: 8px;
+}
+.actionIcon {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+/* responsive adjustments */
+@media (max-width: 1100px) {
+  .tableCard { grid-template-columns: 160px 1fr 240px 120px 120px; gap: 12px; padding: 14px; }
+  .countBadge { min-width: 32px; height: 32px; }
+}
+@media (max-width: 700px) {
+  /* stack subtitle and middle text smaller or hide middle column if needed */
+  .tableCard { grid-template-columns: 140px 1fr 140px 100px 80px; }
+  .middleText, .subtitleText { font-size: 0.9rem; }
+}
