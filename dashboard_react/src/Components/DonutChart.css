@@ -1,0 +1,55 @@
+.donutContainer {
+  position: relative; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* donut svg */
+.donutSvg {
+  position: relative;
+}
+
+/* percentage labels inside */
+
+.donutLabels {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  pointer-events: none;
+}
+
+.donutPercent {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* legend styles */
+.donutLegend {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.legendItem {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  font-size: 1rem;
+  color: #4a0b7a; /* Deep purple like your theme */
+}
+
+.legendDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}

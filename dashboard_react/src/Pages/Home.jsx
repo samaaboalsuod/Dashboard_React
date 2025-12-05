@@ -30,9 +30,20 @@ import placeHoldImg from '../Assets/placeHoldImg.jpg';
 import chart1 from '../Assets/chart1.svg';
 import WorldMap from '../Assets/WorldMap.svg';
 import ProgressBar from '../Components/ProgressBar';
+import DonutChart from '../Components/DonutChart';
 
 
 
+const chartData1 = [
+  { label: "Direct", value: 65, color: "#6C80FF" },      // purple
+  { label: "Behance", value: 20, color: "#68D49E" },     // green
+  { label: "LinkedIn", value: 15, color: "#19DBFF" },    // cyan
+];
+const chartData2 = [
+  { label: "Mobile", value: 65, color: "#6C80FF" },      // purple
+  { label: "Desktop", value: 20, color: "#68D49E" },     // green
+  { label: "Tablet", value: 15, color: "#FFAE4C" },    // cyan
+];
 
 
 
@@ -196,6 +207,25 @@ const Home = () => {
                     </div>
                 </div>
 
+                <div className='chartsCont' >
+
+                   <div className='sec2'>
+
+                    <BigCardTitle title="Traffic Sources" />
+                        
+                    <DonutChart data={chartData1} size={260} strokeWidth={32} />
+  
+                   </div>
+
+                   <div className='sec2'>
+
+                    <BigCardTitle title="Devices Overview" />
+                        
+                    <DonutChart data={chartData2} size={260} strokeWidth={32} />
+  
+                   </div>
+
+                </div>
 
 
 

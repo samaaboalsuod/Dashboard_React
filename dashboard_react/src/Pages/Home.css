@@ -233,3 +233,31 @@ header{
     font-weight: 600;
     font-size: .9rem;
 }
+
+.chartsCont{
+    width: 96%;
+
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.sec2{
+    width: 50%;
+    padding: 1rem;
+
+    border-radius: 8px;
+    border: 1px solid  #F1D6FF;
+    box-shadow: 0 0 4px 0 rgba(136, 18, 139, 0.10);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+
+    overflow: hidden;
+}
+.sec2 h4{
+    width: 100%;
+}

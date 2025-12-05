@@ -39,7 +39,7 @@ nav{
 }
 
 .navHalf{
-    width: 50%;
+    width: 60%;
     display: flex;
     justify-content: flex-end;
     gap: 4rem;
