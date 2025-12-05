@@ -31,6 +31,7 @@ import chart1 from '../Assets/chart1.svg';
 import WorldMap from '../Assets/WorldMap.svg';
 import ProgressBar from '../Components/ProgressBar';
 import DonutChart from '../Components/DonutChart';
+import Footer from '../Components/Footer';
 
 
 
@@ -228,15 +229,13 @@ const Home = () => {
                 </div>
 
 
-
-
             </div>
 
         </div>
 
     </section>
     
-    
+    <Footer />
     
     </> );
 }

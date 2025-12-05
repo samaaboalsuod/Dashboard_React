@@ -80,19 +80,23 @@ header{
 .MainArea{
     display: grid;
     grid-template-columns: 280px 1fr; 
-    height: calc(100vh - 70px); 
+    /* height: calc(100vh - 70px);  */
+    height: fit-content;
 }
 
-.sideBar{
-    background: var(--cards_bg);
-    padding: 2rem 1.5rem;
-    overflow-y: auto;
+.sideBar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  background: var(--cards_bg);
+  padding: 2rem 1.5rem;
+  overflow-y: auto;
 }
 
 
 .contentArea {
     padding: 25px 30px;
-    overflow-y: auto;
+    /* overflow-y: auto; */
 
     display: flex;
     flex-direction: column;
