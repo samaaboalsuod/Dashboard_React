@@ -4,18 +4,19 @@
   align-items: center;
   gap: 16px;
 
-  padding: 18px 20px;
+
+  padding: 2rem 1rem;
   border-radius: 8px;
   box-sizing: border-box;
   font-family: Inter, "Helvetica Neue", Arial, sans-serif;
 
     display: grid;
   grid-template-columns:
-    minmax(160px, 220px)  /* title */
+    minmax(120px, 160px)  /* title */
     1fr                   /* subtitle */
-    minmax(200px, 360px)  /* middle text / count */
-    minmax(100px, 140px)  /* date */
-    minmax(120px, 180px); /* actions */
+    minmax(230px, 300px)  /* middle text / count */
+    minmax(100px, 100px)  /* date */
+    minmax(120px, 200px); /* actions */
 }
 
 .tableCard.grey {
@@ -33,31 +34,34 @@
 /* 1. Title column */
 .titleCol .titleText {
   margin: 0;
-  color: #4a0b7a;
-  font-size: 1rem;
+  color: var(--dark_Purple);
+  font-size: 1.2rem;
   font-weight: 600;
+    font-family: var(--font);
 }
 
 /* 2. Subtitle column - single line */
 .subtitleCol .subtitleText {
   margin: 0;
   color: #9b9b9b;
-  font-size: 0.95rem;
+  font-size: 1rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+      font-family: var(--font);
 }
 
 /* 3. Middle column: subject (text) or count badge */
 .middleCol { justify-content: flex-start; }
 .middleText {
   margin: 0;
-  color: #4a0b7a;
+  color: var(--dark_Purple);
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 1rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+        font-family: var(--font);
 }
 
 /* count badge */
@@ -66,9 +70,9 @@
   min-width: 36px;
   height: 36px;
   padding: 0 10px;
-  background: #7a1fa2;
+  background: var(--Btn_Color);
   color: #fff;
-  border-radius: 8px;
+  border-radius: 4px;
   font-weight: 600;
   align-items:center;
   justify-content:center;
@@ -93,17 +97,17 @@
   align-items: center;
   justify-content: center;
   padding: 8px 12px;
-  border-radius: 8px;
-  font-size: 0.85rem;
-  font-weight: 600;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-weight: 400;
 }
-.statusBadge.new { background: #7a1fa2; color: #fff; }
+.statusBadge.new { background: var(--Btn_Color); color: #fff; }
 .statusBadge.read { background: #e9e1f0; color: #4a0b7a; }
 
 .iconsWrap {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: .7rem;
   margin-left: 8px;
 }
 .actionIcon {

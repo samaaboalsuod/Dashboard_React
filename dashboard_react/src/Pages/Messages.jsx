@@ -20,6 +20,7 @@ import binFill from '../Assets/binFill.svg'
 import prevFill from '../Assets/prevFill.svg'
 import editFill from '../Assets/editFill.svg'
 import MessagesTopCard from '../Components/MessagesTopCard';
+import StrokeBut from '../Components/StrokeBut';
 
 
 
@@ -67,6 +68,9 @@ const Messages = () => {
         icons={[editFill, prevFill, binFill]}
       /> */}
 
+      <div className='messCont'>
+
+
     <TableCard
         title="John Smith"
         subtitle="john.smith@example.com"
@@ -76,6 +80,30 @@ const Messages = () => {
         status="New"
         icons={[editFill, prevFill, binFill]}
       />
+          <TableCard
+        title="Alice Johnson"
+        subtitle="john.smith@example.com"
+        middleText="Design Feedback Request"   /* <-- message title */
+        date="21/10/2025"
+        variant="transparent"
+        status="New"
+        icons={[editFill, prevFill, binFill]}
+      />
+          <TableCard
+        title="Michael Brown"
+        subtitle="michael.brown@example.com"
+        middleText="Feature Update Proposal"   /* <-- message title */
+        date="21/10/2025"
+        variant="grey"
+        status="Read"
+        icons={[editFill, prevFill, binFill]}
+      />
+
+      </div>
+
+      <StrokeBut   strokeButText="Load More Messages" />
+
+
 
             </div>
 
