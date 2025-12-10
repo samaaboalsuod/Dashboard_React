@@ -19,6 +19,7 @@ import SettingIcon from '../Assets/settIcon.svg'
 import binFill from '../Assets/binFill.svg'
 import prevFill from '../Assets/prevFill.svg'
 import editFill from '../Assets/editFill.svg'
+import MessagesTopCard from '../Components/MessagesTopCard';
 
 
 
@@ -54,15 +55,17 @@ const Messages = () => {
 
             <div className='AllContent'>
 
+                <MessagesTopCard />
 
-      <TableCard
+
+      {/* <TableCard
         title="UI/UX Design"
         subtitle="Website, web application and all screens design projects"
         count={12}
         date="21/10/2025"
         variant="grey"
         icons={[editFill, prevFill, binFill]}
-      />
+      /> */}
 
     <TableCard
         title="John Smith"

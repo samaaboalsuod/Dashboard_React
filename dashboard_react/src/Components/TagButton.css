@@ -1,0 +1,12 @@
+.tagBtn{
+    width: fit-content;
+    padding: 0.4rem 1rem;
+
+    background-color: transparent;
+    border: 1px solid #d1d5db;
+    border-radius: 20px;
+    font-size: 1rem;
+    color: var(--Grey);
+    white-space: nowrap;
+    
+}
