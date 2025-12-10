@@ -10,13 +10,7 @@ import ProjectCard from '../Components/ProjectCard';
 import RecentCard from '../Components/RecentCard';
 
 import DashIcon from '../Assets/dashIcon.svg'
-import MailIcon from '../Assets/mailIcon.svg'
-import ProjectIcon from '../Assets/ProjectIcon.svg'
-import PagesIcon from '../Assets/PagesIcon.svg'
-import CalendarIcon from '../Assets/calIcon.svg'
-import profileIcon from '../Assets/proIcon.svg'
-import MessageIcon from '../Assets/messIcon.svg'
-import SettingIcon from '../Assets/settIcon.svg'
+
 import addIcon from '../Assets/add.svg'
 import editIcon from '../Assets/edit.svg'
 
@@ -32,6 +26,7 @@ import WorldMap from '../Assets/WorldMap.svg';
 import ProgressBar from '../Components/ProgressBar';
 import DonutChart from '../Components/DonutChart';
 import Footer from '../Components/Footer';
+import TheSideBar from '../Components/TheSideBar';
 
 
 
@@ -57,19 +52,7 @@ const Home = () => {
 
     <section className='MainArea'>
 
-        <div className='sideBar'>
-
-            <SideBar barIcon={DashIcon} barAction="Dashboard" isActive={true} />
-            <SideBar  barIcon={MailIcon}  barAction="E-mail" isActive={false} />
-            <SideBar  barIcon={ProjectIcon}  barAction="Projects" isActive={false} />
-            <SideBar  barIcon={PagesIcon}  barAction="Pages" isActive={false} />
-            <SideBar  barIcon={CalendarIcon}  barAction="Calendar" isActive={false} />
-            <SideBar  barIcon={profileIcon}  barAction="Profile" isActive={false} />
-            <SideBar  barIcon={MessageIcon}  barAction="Messages" isActive={false} />
-            <SideBar  barIcon={SettingIcon}  barAction="Settings" isActive={false} />
-
-
-        </div>
+        <TheSideBar />
 
         <div className='contentArea'>
 
