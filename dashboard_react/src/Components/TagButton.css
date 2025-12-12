@@ -1,3 +1,5 @@
+/* TagButton.css */
+
 .tagBtn{
     width: fit-content;
     padding: 0.4rem 1rem;
@@ -8,5 +10,20 @@
     font-size: 1rem;
     color: var(--Grey);
     white-space: nowrap;
-    
+    cursor: pointer; /* ADDED: Indicate clickability */
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s; /* ADDED: Smooth transitions */
+}
+
+/* 🚀 SELECTED State Style */
+.tagBtn.selected {
+    background-color: var(--Btn_Color, #88128B); /* Use the specified color */
+    border-color: var(--Btn_Color, #88128B);
+    color: #fff; /* White text */
+}
+
+/* Hover effect for UNSELECTED buttons */
+.tagBtn:not(.selected):hover {
+    background-color: #f0f0f0; /* Very light grey hover background */
+    border-color: #a7a7a7; /* Slightly darker border on hover */
+    color: #4a4a4a; /* Slightly darker text */
 }

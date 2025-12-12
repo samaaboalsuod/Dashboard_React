@@ -1,11 +1,20 @@
-import React, { Component } from 'react';
+// TagButton.jsx
+
+import React from 'react';
 import './TagButton.css'
-const TagButton = (props) => {
-    return ( <>
+
+// Add isSelected and onClick to props destructuring
+const TagButton = ({ tagBtnTxt, isSelected, onClick }) => {
     
-    <div className='tagBtn'>{props.tagBtnTxt}</div>
-    
-    </> );
+    // Conditionally apply the 'selected' class
+    const tagClass = `tagBtn ${isSelected ? 'selected' : ''}`;
+
+    return ( 
+        // Attach the onClick handler
+        <div className={tagClass} onClick={onClick}>
+            {tagBtnTxt}
+        </div>
+    );
 }
  
 export default TagButton;

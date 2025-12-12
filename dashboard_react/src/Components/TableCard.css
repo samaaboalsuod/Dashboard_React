@@ -17,13 +17,34 @@
     minmax(230px, 300px)  /* middle text / count */
     minmax(100px, 100px)  /* date */
     minmax(120px, 200px); /* actions */
+
+    transition: 
+        transform 0.2s ease-out, 
+        box-shadow 0.2s ease-out,
+        background-color 0.2s ease-out;
+}
+
+.tableCard:hover {
+    /* Subtle lift */
+    transform: translateY(-2px);
+    /* Soft shadow for depth */
+    box-shadow: 0 4px 12px rgba(43, 41, 43, 0.08);
 }
 
 .tableCard.grey {
   background: #f3eef6;
 }
+.tableCard.grey:hover {
+    /* Slightly darker grey background on hover for grey rows */
+    background: #e9e4ec; 
+}
+
 .tableCard.transparent {
   background: transparent;
+}
+.tableCard.transparent:hover {
+    /* Lighter grey background on hover for transparent rows */
+    background: #fbfbfb; 
 }
 
 .col {
