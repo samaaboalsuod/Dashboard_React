@@ -1,13 +1,59 @@
-button{
-display: flex;
-width: fit-content;
-padding: .5rem 1rem;
-justify-content: center;
-align-items: center;
+/* Button.css */
 
-border-radius: 4px;
-border: 1px solid #AEA9A9;
-background: var(--Btn_Color);
+.customButton { /* Changed 'button' to a class to avoid styling all buttons globally */
+    display: flex;
+    width: fit-content;
+    padding: .5rem 1rem;
+    justify-content: center;
+    align-items: center;
 
-color: #ffffff;
+    border-radius: 4px;
+    border: 1px solid #AEA9A9;
+    background: var(--Btn_Color, #88128B); /* Added a fallback for Btn_Color */
+
+    color: #ffffff;
+    cursor: pointer; /* Ensure it looks clickable */
+
+    /* 1. Icon Spacing: Sets the .5rem gap */
+    gap: 0.5rem; 
+
+    /* 2. Elegant Hover: Add transition for smooth animation */
+    transition: 
+        background-color 0.3s ease, 
+        transform 0.2s ease, 
+        box-shadow 0.2s ease;
+}
+
+/* Icon Styling */
+.buttonIcon {
+    /* Set a consistent size for the icon */
+    width: 18px; 
+    height: 18px;
+    /* This ensures the icon respects the container's alignment */
+    display: block; 
+}
+
+/* Hover Animation */
+.customButton:hover {
+    /* Subtle background darken */
+    background: color-mix(in srgb, var(--Btn_Color, #88128B) 90%, black);
+
+    /* Subtle lift */
+    transform: translateY(-1px);
+    
+    /* Soft shadow for depth */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.customButton:active {
+    /* Push down effect for a tactile feel */
+    transform: translateY(0);
+    box-shadow: none;
+    background: color-mix(in srgb, var(--Btn_Color, #88128B) 80%, black);
+}
+
+/* Ensure the text is centered vertically */
+.buttonText {
+    margin: 0;
+    line-height: 1; /* Helps with vertical alignment */
 }

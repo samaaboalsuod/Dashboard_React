@@ -1,10 +1,22 @@
-import React, { Component } from 'react';
+// Button.jsx
+
+import React from 'react';
 import './Button.css';
 
-const Button = (props) => {
+// Added IconSrc property for the image source
+const Button = ({ BtnText, IconSrc, ...rest }) => {
     return ( 
-        <button>{props.BtnText}</button>
-     );
+        // Pass any other standard button props like onClick, type, etc.
+        <button className="customButton" {...rest}>
+            {/* 1. Conditionally render the icon */}
+            {IconSrc && (
+                <img src={IconSrc} alt="" className="buttonIcon" />
+            )}
+            
+            {/* 2. Text */}
+            <span className="buttonText">{BtnText}</span>
+        </button>
+    );
 }
  
 export default Button;
