@@ -1,0 +1,40 @@
+/* full width container */
+.langToggleWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* inner wrapper for the tabs */
+.langToggleContainer {  
+  position: relative;
+  display: flex;
+  gap: 2.5rem; /* spacing between English & Arabic */
+  padding-bottom: 0.4rem;
+}
+
+/* buttons */
+.langBtn {
+  background: none;
+  border: none;
+  font-size: 1.05rem;
+  font-weight: 500;
+  cursor: pointer;
+  color: #7a5c90;
+  padding: 0;
+  position: relative;
+}
+
+.langBtn.active {
+  color: #5a1e86;
+}
+
+/* underline that animates */
+.underline {
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  background: #5a1e86;
+  border-radius: 4px;
+  transition: transform 0.3s ease, width 0.3s ease;
+}
