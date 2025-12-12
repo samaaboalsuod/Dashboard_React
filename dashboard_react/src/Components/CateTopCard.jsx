@@ -19,6 +19,7 @@ const CateTopCard = () => {
             <Button  BtnText="Add a new category" IconSrc={addIcon} onClick={handleDownload}
 />
         </div>
+        
      );
 }
  

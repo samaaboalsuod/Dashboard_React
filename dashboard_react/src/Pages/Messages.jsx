@@ -59,14 +59,7 @@ const Messages = () => {
                 <MessagesTopCard />
 
 
-      {/* <TableCard
-        title="UI/UX Design"
-        subtitle="Website, web application and all screens design projects"
-        count={12}
-        date="21/10/2025"
-        variant="grey"
-        icons={[editFill, prevFill, binFill]}
-      /> */}
+
 
       <div className='messCont'>
 
