@@ -3,16 +3,14 @@
 
   align-items: center;
   gap: 16px;
-
-
   padding: 2rem 1rem;
   border-radius: 8px;
   box-sizing: border-box;
-  font-family: Inter, "Helvetica Neue", Arial, sans-serif;
 
     display: grid;
   grid-template-columns:
     minmax(120px, 160px)  /* title */
+    
     1fr                   /* subtitle */
     minmax(230px, 300px)  /* middle text / count */
     minmax(100px, 100px)  /* date */

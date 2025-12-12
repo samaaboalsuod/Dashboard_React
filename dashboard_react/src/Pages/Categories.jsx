@@ -77,6 +77,8 @@ const Categories = () => {
                     />
                 </div>
 
+                <h6>Showing All 5 Categories</h6>
+
 
             </div>
 
