@@ -4,6 +4,7 @@ import Home from './Pages/Home';
 import Messages from './Pages/Messages';
 import Categories from './Pages/Categories';
 import ProjectEdit from './Pages/ProjectEdit';
+import TestAPI from './Pages/TestAPI';
 
 const RoutingApp = () => {
     return ( <>
@@ -15,6 +16,8 @@ const RoutingApp = () => {
           <Route path='/Messages' element={<Messages />} />
           <Route path='/Categories' element={<Categories />} />
           <Route path='/ProjectEdit' element={<ProjectEdit />} />
+
+          <Route path='/TestAPI' element={<TestAPI />} />
 
 
           {/* <Route path='*' element={<Error />} /> */}
