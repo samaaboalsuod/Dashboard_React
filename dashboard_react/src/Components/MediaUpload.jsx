@@ -13,7 +13,10 @@ const MediaUpload = ({
 
       <div className="media-upload-box">
         <div className="media-upload-content">
-          <div className="media-upload-icon">{icon}</div>
+          <div className="media-upload-icon">
+            <img src={icon} alt="upload icon" />
+          </div>
+
           <span className="media-upload-text">{centerText}</span>
         </div>
 

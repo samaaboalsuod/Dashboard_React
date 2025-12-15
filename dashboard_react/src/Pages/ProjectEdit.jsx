@@ -11,6 +11,11 @@ import ShortInput from '../Components/ShortInput';
 import RichText from '../Components/RichText';
 import SelectInput from '../Components/SelectInput';
 import MediaUpload from '../Components/MediaUpload';
+import Button from '../Components/Button';
+import NavIcon from '../Components/NavIcon';
+
+import editFill from '../Assets/editWhite.svg'
+import uploadIcon from '../Assets/uploadIcon.svg'
 
 
 
@@ -34,8 +39,11 @@ const ProjectEdit = () => {
                 <div className='sec1'>
 
                   <div className='column'>
+                    <div className='shortInputsCont'>
 
                   <BigCardTitle title="Basic Info" />
+                  <NavIcon  navIcon={editFill} /> 
+                    </div>
 
                   <div className='shortInputsCont'>
 
@@ -72,8 +80,10 @@ const ProjectEdit = () => {
                   ]}
                 />
 
-                <MediaUpload title="Hero Media" icon="⬆️" centerText="Upload a Photo / Video" helperText="5 MB max" />
-                <MediaUpload title="Gallery Media" icon="⬆️" centerText="Upload a Photo / Video" helperText="20 MB max" />
+                <MediaUpload title="Hero Media" icon={uploadIcon} centerText="Upload a Photo / Video" helperText="5 MB max" />
+                <MediaUpload title="Gallery Media" icon={uploadIcon} centerText="Upload a Photo / Video" helperText="20 MB max" />
+
+                <Button BtnText="Save Changes" />
 
                   </div>
 
