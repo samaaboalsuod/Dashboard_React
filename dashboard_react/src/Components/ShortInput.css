@@ -1,5 +1,8 @@
 .short-input-wrapper {
-  width: 49%;
+  min-width: 49%;
+  max-width: 100%;
+;
+  /* width: 49%; */
   display: flex;
   flex-direction: column;
   gap: 6px;

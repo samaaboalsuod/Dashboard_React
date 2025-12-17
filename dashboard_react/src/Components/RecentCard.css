@@ -40,7 +40,7 @@
 }
 
 .iconRow{
-    width: 60%;
+    /* width: 60%; */
 
     display: flex;
     justify-content: flex-start;

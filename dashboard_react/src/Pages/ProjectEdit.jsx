@@ -13,9 +13,16 @@ import SelectInput from '../Components/SelectInput';
 import MediaUpload from '../Components/MediaUpload';
 import Button from '../Components/Button';
 import NavIcon from '../Components/NavIcon';
+import IconImg from '../Components/iconImg';
 
 import editFill from '../Assets/editWhite.svg'
 import uploadIcon from '../Assets/uploadIcon.svg'
+
+import binFill from '../Assets/binFill.svg'
+import prevFill from '../Assets/prevFill.svg'
+
+
+
 
 
 
@@ -111,6 +118,45 @@ const ProjectEdit = () => {
 
                   </div>
 
+                </div>
+
+                <div className='sec1'>
+
+                  <div className='shortInputsCont'>
+                    <BigCardTitle title="UI/UX Projects" />
+                    <NavIcon  navIcon={editFill} /> 
+                  </div>
+
+                  <div className='sec1'>
+
+                    <div className='shortInputsCont'>
+
+                      <BigCardTitle title="Feature 1" />
+                      <div className='iconRow'>
+                        <IconImg src={binFill} />
+                        <IconImg src={prevFill} />
+                      </div>
+
+                    </div>
+
+                    <div className='featureCont'>
+
+                      <div className='halfCol'>
+                        <ShortInput title="Feature Name" placeholder="feature name" />
+                        <RichText title="Description" placeholder="More about this feature......" maxChars={150} />
+                      </div>
+
+                     <MediaUpload title="Feature Media" icon={uploadIcon} centerText="Upload a Photo / Video" helperText="5 MB max" />
+
+
+
+                    </div>
+
+
+
+
+
+                  </div>
                 </div>
 
 
