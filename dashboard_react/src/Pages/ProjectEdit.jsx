@@ -52,7 +52,7 @@ const ProjectEdit = () => {
 
                   </div>
 
-                  <RichText title="Project overview" placeholder="More about the project..." maxChars={150} />
+                  <RichText title="Project overview" placeholder="More about the project..." maxChars={500} />
 
                 <SelectInput title="Project Category" placeholder="Select category"
                   options={[
@@ -82,6 +82,30 @@ const ProjectEdit = () => {
 
                 <MediaUpload title="Hero Media" icon={uploadIcon} centerText="Upload a Photo / Video" helperText="5 MB max" />
                 <MediaUpload title="Gallery Media" icon={uploadIcon} centerText="Upload a Photo / Video" helperText="20 MB max" />
+
+                <Button BtnText="Save Changes" />
+
+                  </div>
+
+                </div>
+
+                <div className='sec1'>
+
+                  <div className='column'>
+                    <div className='shortInputsCont'>
+
+                  <BigCardTitle title="SEO Optimization" />
+                  <NavIcon  navIcon={editFill} /> 
+                    </div>
+
+                  <div className='shortInputsCont'>
+
+                    <ShortInput title="Page Title" placeholder="page title" />
+                    <ShortInput title="Page Slug" placeholder="page slug" />
+
+                  </div>
+
+                  <RichText title="Meta Description" placeholder="write mete description..." maxChars={150} />
 
                 <Button BtnText="Save Changes" />
 
