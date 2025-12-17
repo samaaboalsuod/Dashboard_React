@@ -1,6 +1,7 @@
 .media-upload-wrapper {
-  min-width: 50%;
-  max-width: 100%;
+  /* min-width: 50%;
+  max-width: 100%; */
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 6px; 

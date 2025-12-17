@@ -15,6 +15,7 @@ import Button from '../Components/Button';
 import NavIcon from '../Components/NavIcon';
 import IconImg from '../Components/iconImg';
 import StrokeBut from '../Components/StrokeBut';
+import TagInput from '../Components/TagInput';
 
 import editFill from '../Assets/editWhite.svg'
 import uploadIcon from '../Assets/uploadIcon.svg'
@@ -22,7 +23,7 @@ import uploadIcon from '../Assets/uploadIcon.svg'
 import binFill from '../Assets/binFill.svg'
 import prevFill from '../Assets/prevFill.svg'
 import addIcon from '../Assets/add.svg'
-import TagInput from '../Components/TagInput';
+import videoIcon from '../Assets/videoIcon.svg'
 
 
 
@@ -148,7 +149,9 @@ const ProjectEdit = () => {
                         <RichText title="Description" placeholder="More about this feature......" maxChars={150} />
                       </div>
 
-                     <MediaUpload title="Feature Media" icon={uploadIcon} centerText="Upload a Photo / Video" helperText="5 MB max" />
+                      <div className='halfCol'>
+                        <MediaUpload title="Feature Media" icon={uploadIcon} centerText="Upload a Photo / Video" helperText="5 MB max" />
+                      </div>
 
 
 
@@ -175,18 +178,54 @@ const ProjectEdit = () => {
                         <RichText title="Description" placeholder="More about this feature......" maxChars={150} />
                       </div>
 
-                     <MediaUpload title="Feature Media" icon={uploadIcon} centerText="Upload a Photo / Video" helperText="5 MB max" />
+                      <div className='halfCol'>
+                        <MediaUpload title="Feature Media" icon={uploadIcon} centerText="Upload a Photo / Video" helperText="5 MB max" />
+                      </div>
+
 
                     </div>
 
                     </div>
 
 
-                <StrokeBut strokeButIcon={addIcon} strokeButText="Add a new Feature" />
+                  <StrokeBut strokeButIcon={addIcon} strokeButText="Add a new Feature" />
 
-                <TagInput title="Project Colors" placeholderText="Add a color" maxTags={6} />
+                  <TagInput title="Project Colors" placeholderText="Add a color" maxTags={6} />
+
+                  <div className='sec1'>
+
+                      <div className='shortInputsCont'>
+
+                      <BigCardTitle title="Fonts" />
+                      <div className='iconRow'>
+                        <IconImg src={binFill} />
+                        <IconImg src={prevFill} />
+                      </div>
+
+                    </div>
+                      
+                    <div className='featureCont'>
+
+                      <div className='halfCol'>
+                        <ShortInput title="Font 1 Name" placeholder="font 1 name" />
+                        <RichText title="Alphabet" placeholder="Write the Alphapet" maxChars={60} />
+                      </div>
+
+                      <div className='halfCol'>
+                        <ShortInput title="Font 2 Name" placeholder="font 2 name" />
+                        <RichText title="Alphabet" placeholder="Write the Alphapet" maxChars={60} />
+                      </div>
 
 
+                    </div>
+
+                  </div>
+
+                    <MediaUpload title="Prototype Video" icon={videoIcon} centerText="Upload a Video" helperText="5 MB max" />
+
+                    <Button BtnText="Save Changes" />
+
+                    
                 </div>
 
 
