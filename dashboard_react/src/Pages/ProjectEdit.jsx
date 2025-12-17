@@ -151,12 +151,84 @@ const ProjectEdit = () => {
 
 
                     </div>
-
-
-
-
-
+                    
                   </div>
+
+                    <div className='sec1'>
+
+                      <div className='shortInputsCont'>
+
+                      <BigCardTitle title="Feature 2" />
+                      <div className='iconRow'>
+                        <IconImg src={binFill} />
+                        <IconImg src={prevFill} />
+                      </div>
+
+                    </div>
+                      
+                    <div className='featureCont'>
+
+                      <div className='halfCol'>
+                        <ShortInput title="Feature Name" placeholder="feature name" />
+                        <RichText title="Description" placeholder="More about this feature......" maxChars={150} />
+                      </div>
+
+                     <MediaUpload title="Feature Media" icon={uploadIcon} centerText="Upload a Photo / Video" helperText="5 MB max" />
+
+                    </div>
+
+                    </div>
+
+                    <div className='sec1'>
+
+                    <div className='shortInputsCont'>
+
+                      <BigCardTitle title="Feature 3" />
+                      <div className='iconRow'>
+                        <IconImg src={binFill} />
+                        <IconImg src={prevFill} />
+                      </div>
+
+                    </div>
+
+                    <div className='featureCont'>
+
+                      <div className='halfCol'>
+                        <ShortInput title="Feature Name" placeholder="feature name" />
+                        <RichText title="Description" placeholder="More about this feature......" maxChars={150} />
+                      </div>
+
+                     <MediaUpload title="Feature Media" icon={uploadIcon} centerText="Upload a Photo / Video" helperText="5 MB max" />
+
+                    </div>
+                    </div>
+
+                    <div className='sec1'>
+
+                    <div className='shortInputsCont'>
+
+                      <BigCardTitle title="Feature 4" />
+                      <div className='iconRow'>
+                        <IconImg src={binFill} />
+                        <IconImg src={prevFill} />
+                      </div>
+
+                    </div>
+
+                    <div className='featureCont'>
+
+                      <div className='halfCol'>
+                        <ShortInput title="Feature Name" placeholder="feature name" />
+                        <RichText title="Description" placeholder="More about this feature......" maxChars={150} />
+                      </div>
+
+                     <MediaUpload title="Feature Media" icon={uploadIcon} centerText="Upload a Photo / Video" helperText="5 MB max" />
+
+                    </div>
+                    </div>
+
+                <Button BtnText="Save Changes" />
+
                 </div>
 
 
