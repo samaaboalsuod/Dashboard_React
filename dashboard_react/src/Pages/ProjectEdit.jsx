@@ -14,13 +14,15 @@ import MediaUpload from '../Components/MediaUpload';
 import Button from '../Components/Button';
 import NavIcon from '../Components/NavIcon';
 import IconImg from '../Components/iconImg';
+import StrokeBut from '../Components/StrokeBut';
 
 import editFill from '../Assets/editWhite.svg'
 import uploadIcon from '../Assets/uploadIcon.svg'
 
 import binFill from '../Assets/binFill.svg'
 import prevFill from '../Assets/prevFill.svg'
-
+import addIcon from '../Assets/add.svg'
+import TagInput from '../Components/TagInput';
 
 
 
@@ -179,55 +181,11 @@ const ProjectEdit = () => {
 
                     </div>
 
-                    <div className='sec1'>
 
-                    <div className='shortInputsCont'>
+                <StrokeBut strokeButIcon={addIcon} strokeButText="Add a new Feature" />
 
-                      <BigCardTitle title="Feature 3" />
-                      <div className='iconRow'>
-                        <IconImg src={binFill} />
-                        <IconImg src={prevFill} />
-                      </div>
+                <TagInput title="Project Colors" placeholderText="Add a color" maxTags={6} />
 
-                    </div>
-
-                    <div className='featureCont'>
-
-                      <div className='halfCol'>
-                        <ShortInput title="Feature Name" placeholder="feature name" />
-                        <RichText title="Description" placeholder="More about this feature......" maxChars={150} />
-                      </div>
-
-                     <MediaUpload title="Feature Media" icon={uploadIcon} centerText="Upload a Photo / Video" helperText="5 MB max" />
-
-                    </div>
-                    </div>
-
-                    <div className='sec1'>
-
-                    <div className='shortInputsCont'>
-
-                      <BigCardTitle title="Feature 4" />
-                      <div className='iconRow'>
-                        <IconImg src={binFill} />
-                        <IconImg src={prevFill} />
-                      </div>
-
-                    </div>
-
-                    <div className='featureCont'>
-
-                      <div className='halfCol'>
-                        <ShortInput title="Feature Name" placeholder="feature name" />
-                        <RichText title="Description" placeholder="More about this feature......" maxChars={150} />
-                      </div>
-
-                     <MediaUpload title="Feature Media" icon={uploadIcon} centerText="Upload a Photo / Video" helperText="5 MB max" />
-
-                    </div>
-                    </div>
-
-                <Button BtnText="Save Changes" />
 
                 </div>
 
