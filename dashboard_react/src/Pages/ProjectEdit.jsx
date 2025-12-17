@@ -517,7 +517,7 @@ const ProjectEdit = () => {
                     
                 </div>
 
-                                <div className='sec1'>
+                <div className='sec1'>
 
                   <div className='shortInputsCont'>
                     <BigCardTitle title="3D Modeling Projects" />

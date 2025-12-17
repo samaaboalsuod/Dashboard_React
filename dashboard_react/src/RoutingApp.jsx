@@ -5,6 +5,7 @@ import Messages from './Pages/Messages';
 import Categories from './Pages/Categories';
 import ProjectEdit from './Pages/ProjectEdit';
 import TestAPI from './Pages/TestAPI';
+import PagesList from './Pages/PagesList';
 
 const RoutingApp = () => {
     return ( <>
@@ -16,6 +17,7 @@ const RoutingApp = () => {
           <Route path='/Messages' element={<Messages />} />
           <Route path='/Categories' element={<Categories />} />
           <Route path='/ProjectEdit' element={<ProjectEdit />} />
+          <Route path='/PagesList' element={<PagesList />} />
 
           <Route path='/TestAPI' element={<TestAPI />} />
 
