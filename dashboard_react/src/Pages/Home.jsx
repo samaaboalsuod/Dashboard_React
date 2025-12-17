@@ -9,7 +9,6 @@ import OverviewCard from '../Components/OverviewCard';
 import ProjectCard from '../Components/ProjectCard';
 import RecentCard from '../Components/RecentCard';
 
-import DashIcon from '../Assets/dashIcon.svg'
 
 import addIcon from '../Assets/add.svg'
 import editIcon from '../Assets/edit.svg'

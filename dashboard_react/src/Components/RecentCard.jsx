@@ -1,36 +1,73 @@
-import React, { Component } from 'react';
-import './RecentCard.css'
+import React from "react";
+import "./RecentCard.css";
 
+import binFill from "../Assets/binFill.svg";
+import prevFill from "../Assets/prevFill.svg";
+import editFill from "../Assets/editFill.svg";
 
-import binFill from '../Assets/binFill.svg'
-import prevFill from '../Assets/prevFill.svg'
-import editFill from '../Assets/editFill.svg'
+import IconImg from "./iconImg";
 
-import IconImg from './iconImg';
+const RecentCard = ({
+  image,
+  title,
+  category,
+  time,
 
+  slug,
+  projectState,
+  publishState,
+  categoryColor
+}) => {
+  return (
+    <div className="recentCardCont">
 
-const RecentCard = (props) => {
-    return ( 
-        <div className='recentCardCont'>
+      <img className="recImg" src={image} alt="" />
 
-            <img className='recImg' src={props.image} alt="" />
+      <div className="recentData">
 
-            <div className='recentData'>
+        <h4>{title}</h4>
 
-                <h4>{props.title}</h4>
-                <h6>{props.category}</h6>
-                <p>{props.time}</p>
+        {/* Category */}
+        {category && (
+          <h6
+            className="categoryTag"
+            style={{ backgroundColor: categoryColor }}
+          >
+            {category}
+          </h6>
+        )}
 
-                <div className='iconRow'>
-                    <IconImg src={binFill} />
-                    <IconImg src={prevFill} />
-                    <IconImg src={editFill} />
-                </div>
+        {/* Slug */}
+        {slug && <span className="slugText">{slug}</span>}
 
-            </div>
+        {/* States */}
+        {(projectState || publishState) && (
+          <div className="stateRow">
+            {projectState && (
+              <span className="stateTag state-project">
+                {projectState}
+              </span>
+            )}
 
+            {publishState && (
+              <span className={`stateTag state-${publishState.toLowerCase()}`}>
+                {publishState}
+              </span>
+            )}
+          </div>
+        )}
+
+        <p>{time}</p>
+
+        <div className="iconRow">
+          <IconImg src={binFill} />
+          <IconImg src={prevFill} />
+          <IconImg src={editFill} />
         </div>
-     );
-}
- 
+
+      </div>
+    </div>
+  );
+};
+
 export default RecentCard;

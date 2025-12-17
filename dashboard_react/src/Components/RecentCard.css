@@ -11,7 +11,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    gap: 1rem;
+    gap: 1.5rem;
 
      transition: all 0.2s ease;
 }
@@ -36,7 +36,7 @@
     justify-content: flex-start;
     align-items: flex-start;
 
-    gap: .5rem;
+    gap: 1rem;
 }
 
 .iconRow{
@@ -47,4 +47,56 @@
     align-items: center;
 
     gap: .5rem;
+}
+
+
+.categoryTag {
+  padding: 0.3rem 0.7rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  color: #4a1b5a;
+  background-color: #eee;
+}
+
+.slugText {
+  padding: 0.3rem 0.7rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  background-color: #f0f0f0;
+  color: #666;
+}
+
+.stateRow {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.stateTag {
+  padding: 0.3rem 0.7rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Project state */
+.state-project {
+  background-color: #e6f0ff;
+  color: #3355aa;
+}
+
+/* Publish states */
+.state-published {
+  background-color: #e6ffe6;
+  color: #2f8f2f;
+}
+
+.state-draft {
+  background-color: #fff3cd;
+  color: #8a6d3b;
+}
+
+.state-unpublished {
+  background-color: #fdecea;
+  color: #a94442;
 }
