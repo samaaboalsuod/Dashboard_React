@@ -1,0 +1,42 @@
+.rememberWrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.rememberWrap input {
+  display: none;
+}
+
+.customBox {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  border: 1px solid #aaa;
+  position: relative;
+}
+
+.rememberWrap input:checked + .customBox {
+  background-color: #8a1fa6;
+  border-color: #8a1fa6;
+}
+
+.customBox::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  background: #fff;
+  opacity: 0;
+  border-radius: 2px;
+}
+
+.rememberWrap input:checked + .customBox::after {
+  opacity: 1;
+}
+
+.rememberTxt {
+  font-size: 0.8rem;
+  color: #ddd;
+}

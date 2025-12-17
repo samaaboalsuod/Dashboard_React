@@ -6,6 +6,7 @@ import Categories from './Pages/Categories';
 import ProjectEdit from './Pages/ProjectEdit';
 import TestAPI from './Pages/TestAPI';
 import PagesList from './Pages/PagesList';
+import Login from './Pages/Login';
 
 const RoutingApp = () => {
     return ( <>
@@ -18,6 +19,7 @@ const RoutingApp = () => {
           <Route path='/Categories' element={<Categories />} />
           <Route path='/ProjectEdit' element={<ProjectEdit />} />
           <Route path='/PagesList' element={<PagesList />} />
+          <Route path='/Login' element={<Login />} />
 
           <Route path='/TestAPI' element={<TestAPI />} />
 

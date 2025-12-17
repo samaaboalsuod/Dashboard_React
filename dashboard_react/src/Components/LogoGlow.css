@@ -1,0 +1,33 @@
+.logoGlowWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.logoGlowCircle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.305);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow:
+    0 0 25px rgba(174, 98, 255, 0.6),
+    inset 0 0 12px rgba(255, 255, 255, 0.25);
+}
+
+.logoGlowCircle img{
+  width: 40px;
+
+} 
+
+
+
+.welcomeTxt {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
