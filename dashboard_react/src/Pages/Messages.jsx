@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState } from 'react';
+import { supabase } from '../Supabase';
+
 import './Messages.css'
 import './Home.css'
 
@@ -28,6 +30,22 @@ import StrokeBut from '../Components/StrokeBut';
 
 
 const Messages = () => {
+
+        const [loading, setLoading] = useState(true)
+        const [msg, setMsg] = useState([])
+    
+        useEffect(() => {
+    
+            async function callMsgAPI (){
+                const res = await supabase.from('Messages').select('*')
+                setMsg(res.data);
+                setLoading(false);
+                // console.log(res);
+            }
+            callMsgAPI();
+        },[]);
+    if (loading) return <p>Loading...</p>;
+
     return ( <>
     
     
@@ -63,34 +81,20 @@ const Messages = () => {
 
       <div className='messCont'>
 
-
-    <TableCard
-        title="John Smith"
-        subtitle="john.smith@example.com"
-        middleText="Project Collaboration Inquiry"   /* <-- message title */
-        date="21/10/2025"
-        variant="grey"
-        status="New"
-        icons={[editFill, prevFill, binFill]}
-      />
-          <TableCard
-        title="Alice Johnson"
-        subtitle="john.smith@example.com"
-        middleText="Design Feedback Request"   /* <-- message title */
-        date="21/10/2025"
-        variant="transparent"
-        status="New"
-        icons={[editFill, prevFill, binFill]}
-      />
-          <TableCard
-        title="Michael Brown"
-        subtitle="michael.brown@example.com"
-        middleText="Feature Update Proposal"   /* <-- message title */
-        date="21/10/2025"
-        variant="grey"
-        status="Read"
-        icons={[editFill, prevFill, binFill]}
-      />
+{msg.map((item) => (
+        <TableCard
+            key={item.id}
+            title={item.senderName}
+            subtitle={item.senderMail}
+            /* If subject is NULL, show the first few words of the body as a fallback */
+            middleText={item.subject || (item.body ? item.body.substring(0, 30) + "..." : "No Subject")} 
+            /* Convert DB date to a readable format */
+            date={item.date ? new Date(item.date).toLocaleDateString('en-GB') : "No Date"}
+            variant="grey"
+            status={item.subject ? "Inquiry" : "Message"} // Example status logic
+            icons={[editFill, prevFill, binFill]}
+        />
+    ))}
 
       </div>
 
