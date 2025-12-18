@@ -81,17 +81,19 @@ const Messages = () => {
 
       <div className='messCont'>
 
-{msg.map((item) => (
+{msg.map((item, index) => (
         <TableCard
             key={item.id}
             title={item.senderName}
             subtitle={item.senderMail}
-            /* If subject is NULL, show the first few words of the body as a fallback */
             middleText={item.subject || (item.body ? item.body.substring(0, 30) + "..." : "No Subject")} 
-            /* Convert DB date to a readable format */
             date={item.date ? new Date(item.date).toLocaleDateString('en-GB') : "No Date"}
-            variant="grey"
-            status={item.subject ? "Inquiry" : "Message"} // Example status logic
+            
+            /* DYNAMIC VARIANT LOGIC */
+            /* This checks if the index is even or odd */
+            variant={index % 2 === 0 ? "grey" : "transparent"}
+            
+            status={item.subject ? "Inquiry" : "Message"}
             icons={[editFill, prevFill, binFill]}
         />
     ))}
