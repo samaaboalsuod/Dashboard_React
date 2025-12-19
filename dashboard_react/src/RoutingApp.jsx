@@ -21,7 +21,7 @@ const RoutingApp = () => {
           <Route path='/PagesList' element={<PagesList />} />
           <Route path='/Login' element={<Login />} />
 
-          <Route path='/TestAPI' element={<TestAPI />} />
+          <Route path='/TestAPI:id' element={<TestAPI />} />
 
 
           {/* <Route path='*' element={<Error />} /> */}

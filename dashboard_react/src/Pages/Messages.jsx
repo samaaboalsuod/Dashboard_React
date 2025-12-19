@@ -33,18 +33,25 @@ const Messages = () => {
 
         const [loading, setLoading] = useState(true)
         const [msg, setMsg] = useState([])
-    
-        useEffect(() => {
-    
-            async function callMsgAPI (){
-                const res = await supabase.from('Messages').select('*')
-                setMsg(res.data);
-                setLoading(false);
-                // console.log(res);
-            }
-            callMsgAPI();
-        },[]);
-    if (loading) return <p>Loading...</p>;
+
+useEffect(() => {
+ async function callMsgAPI() {
+    const { data, error } = await supabase
+        .from('Messages')
+        .select('*')
+        .order('id', { ascending: false });
+
+    if (data) {
+        setMsg(data);
+    }
+    setLoading(false);
+}
+
+  callMsgAPI();
+}, []); 
+
+if (loading) return <p>Loading...</p>;
+
 
     return ( <>
     
@@ -81,22 +88,28 @@ const Messages = () => {
 
       <div className='messCont'>
 
-{msg.map((item, index) => (
-        <TableCard
-            key={item.id}
-            title={item.senderName}
-            subtitle={item.senderMail}
-            middleText={item.subject || (item.body ? item.body.substring(0, 30) + "..." : "No Subject")} 
-            date={item.date ? new Date(item.date).toLocaleDateString('en-GB') : "No Date"}
-            
-            /* DYNAMIC VARIANT LOGIC */
-            /* This checks if the index is even or odd */
-            variant={index % 2 === 0 ? "grey" : "transparent"}
-            
-            status={item.subject ? "Inquiry" : "Message"}
-            icons={[editFill, prevFill, binFill]}
-        />
-    ))}
+{msg.map((item) => {
+    const currentStatus = item.status || "New";
+    
+    // FORMATTING THE DATE:
+    // If the date exists, turn it into a readable string (DD/MM/YYYY)
+    const displayDate = item.date 
+      ? new Date(item.date).toLocaleDateString('en-GB') 
+      : "Just now";
+
+    return (
+      <TableCard
+        key={item.id}
+        title={item.senderName}
+        subtitle={item.senderMail}
+        middleText={item.subject || item.body} 
+        date={displayDate} // Uses the clean formatted date
+        variant={currentStatus === "New" ? "grey" : "transparent"}
+        status={currentStatus} 
+        icons={[editFill, prevFill, binFill]}
+      />
+    );
+  })}
 
       </div>
 
