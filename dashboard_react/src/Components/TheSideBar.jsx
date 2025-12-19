@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './TheSideBar.css'
 import SideBar from './SideBar';
 
+import { Link } from 'react-router-dom';
 
 import DashIcon from '../Assets/dashIcon.svg'
 import MailIcon from '../Assets/mailIcon.svg'
@@ -21,14 +22,14 @@ const TheSideBar = () => {
     
     <div className='sideBar'>
 
-            <SideBar barIcon={DashIcon} barAction="Dashboard" isActive={true} />
-            <SideBar  barIcon={MailIcon}  barAction="E-mail" isActive={false} />
-            <SideBar  barIcon={ProjectIcon}  barAction="Projects" isActive={false} />
-            <SideBar  barIcon={PagesIcon}  barAction="Pages" isActive={false} />
-            <SideBar  barIcon={CalendarIcon}  barAction="Calendar" isActive={false} />
-            <SideBar  barIcon={profileIcon}  barAction="Profile" isActive={false} />
-            <SideBar  barIcon={MessageIcon}  barAction="Messages" isActive={false} />
-            <SideBar  barIcon={SettingIcon}  barAction="Settings" isActive={false} />
+            <Link to="/"> <SideBar barIcon={DashIcon} barAction="Dashboard" isActive={true} /> </Link>
+            <Link to="/PagesList">  <SideBar  barIcon={PagesIcon}  barAction="Pages" isActive={false} /> </Link>
+            <Link to="/Messages"> <SideBar  barIcon={MailIcon}  barAction="E-mail" isActive={false} />  </Link>
+            {/* <Link to="/">  <SideBar  barIcon={ProjectIcon}  barAction="Projects" isActive={false} /> </Link> */}
+            <Link to="/">  <SideBar  barIcon={CalendarIcon}  barAction="Calendar" isActive={false} /> </Link>
+            {/* <Link to="/">  <SideBar  barIcon={profileIcon}  barAction="Profile" isActive={false} /> </Link> */}
+            <Link to="/Messages">  <SideBar  barIcon={MessageIcon}  barAction="Messages" isActive={false} /> </Link>
+            <Link to="/">  <SideBar  barIcon={SettingIcon}  barAction="Settings" isActive={false} /> </Link>
 
     </div>
     

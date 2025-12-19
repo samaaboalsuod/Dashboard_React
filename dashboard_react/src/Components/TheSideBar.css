@@ -6,3 +6,6 @@
   padding: 2rem 1.5rem;
   overflow-y: auto;
 }
+a {
+  text-decoration: none;
+}

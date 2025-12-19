@@ -26,6 +26,7 @@ import ProgressBar from '../Components/ProgressBar';
 import DonutChart from '../Components/DonutChart';
 import Footer from '../Components/Footer';
 import TheSideBar from '../Components/TheSideBar';
+import { Link } from 'react-router-dom';
 
 
 
@@ -56,8 +57,8 @@ const Home = () => {
         <div className='contentArea'>
 
             <div className='toptwobut'>
-                <StrokeBut  strokeButIcon={addIcon}  strokeButText="Add a new Project" />
-                <StrokeBut  strokeButIcon={editIcon}  strokeButText="Edit Categories" />
+                <Link to="/ProjectEdit"> <StrokeBut  strokeButIcon={addIcon}  strokeButText="Add a new Project" /> </Link>
+                <Link to="/Categories"> <StrokeBut  strokeButIcon={editIcon}  strokeButText="Edit Categories" /> </Link>
             </div>
 
             <div className='AllContent'>

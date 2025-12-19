@@ -23,6 +23,7 @@ import prevFill from '../Assets/prevFill.svg'
 import editFill from '../Assets/editFill.svg'
 import MessagesTopCard from '../Components/MessagesTopCard';
 import StrokeBut from '../Components/StrokeBut';
+import TheSideBar from '../Components/TheSideBar';
 
 
 
@@ -62,19 +63,8 @@ if (loading) return <p>Loading...</p>;
 
     <section className='MainArea'>
 
-        <div className='sideBar'>
+      <TheSideBar />
 
-            <SideBar barIcon={DashIcon} barAction="Dashboard" isActive={true} />
-            <SideBar  barIcon={MailIcon}  barAction="E-mail" isActive={false} />
-            <SideBar  barIcon={ProjectIcon}  barAction="Projects" isActive={false} />
-            <SideBar  barIcon={PagesIcon}  barAction="Pages" isActive={false} />
-            <SideBar  barIcon={CalendarIcon}  barAction="Calendar" isActive={false} />
-            <SideBar  barIcon={profileIcon}  barAction="Profile" isActive={false} />
-            <SideBar  barIcon={MessageIcon}  barAction="Messages" isActive={false} />
-            <SideBar  barIcon={SettingIcon}  barAction="Settings" isActive={false} />
-
-
-        </div>
 
         <div className='contentArea'>
 
