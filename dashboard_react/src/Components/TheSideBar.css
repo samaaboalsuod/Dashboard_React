@@ -9,3 +9,44 @@
 a {
   text-decoration: none;
 }
+
+/* --- DESKTOP (KEEP YOURS) --- */
+.sideBar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  background: var(--cards_bg);
+  padding: 2rem 1.5rem;
+  overflow-y: auto;
+  width: 260px; /* Base width */
+  transition: width 0.3s ease;
+}
+
+/* --- MOBILE RESPONSIVE (THE FIX) --- */
+@media (max-width: 1024px) {
+  .sideBar {
+    width: 80px !important; /* Forces the sidebar to shrink */
+    padding: 2rem 0.5rem !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* HIDE THE TEXT LABELS */
+  .sideBar h6, 
+  .sideBarItem h6 {
+    display: none !important;
+  }
+
+  /* CENTER THE ICONS */
+  .sideBarItem {
+    justify-content: center !important;
+    padding: 1rem 0 !important;
+    gap: 0 !important;
+  }
+
+  .sideBarItem img {
+    width: 24px !important;
+    margin: 0 !important;
+  }
+}

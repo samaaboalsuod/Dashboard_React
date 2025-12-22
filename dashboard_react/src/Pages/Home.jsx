@@ -14,12 +14,6 @@ import RecentCard from '../Components/RecentCard';
 import addIcon from '../Assets/add.svg'
 import editIcon from '../Assets/edit.svg'
 
-import projectsCardIcon from '../Assets/projectsCardIcon.svg'
-import UXcardIcon from '../Assets/UXcardIcon.svg'
-import FrontCardIcon from '../Assets/FrontCardIcon.svg'
-import GraphicCardIcon from '../Assets/GraphicCardIcon.svg'
-import DCardIcon from '../Assets/3DCardIcon.svg'
-import PhotoCardIcon from '../Assets/PhotoCardIcon.svg'
 import placeHoldImg from '../Assets/placeHoldImg.jpg';
 import chart1 from '../Assets/chart1.svg';
 import WorldMap from '../Assets/WorldMap.svg';
