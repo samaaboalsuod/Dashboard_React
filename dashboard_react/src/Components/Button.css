@@ -1,27 +1,26 @@
 /* Button.css */
 
-.customButton { /* Changed 'button' to a class to avoid styling all buttons globally */
+.customButton {
     display: flex;
-    width: fit-content;
-    padding: .5rem 1rem;
+    /* CHANGE 1: Use width 100% on mobile-first or ensure it doesn't exceed 100% */
+    width: fit-content; 
+    max-width: 100%; /* Safety: Ensures button never pokes out of the white box */
+    
+    padding: .6rem 1rem; /* Slightly taller for better touch on mobile */
     justify-content: center;
     align-items: center;
 
     border-radius: 4px;
     border: 1px solid #AEA9A9;
-    background: var(--Btn_Color, #88128B); /* Added a fallback for Btn_Color */
-
+    background: var(--Btn_Color, #88128B);
     color: #ffffff;
-    cursor: pointer; /* Ensure it looks clickable */
-
-    /* 1. Icon Spacing: Sets the .5rem gap */
+    cursor: pointer;
     gap: 0.5rem; 
-
-    /* 2. Elegant Hover: Add transition for smooth animation */
-    transition: 
-        background-color 0.3s ease, 
-        transform 0.2s ease, 
-        box-shadow 0.2s ease;
+    
+    /* CHANGE 2: Extremely important to prevent cropping! */
+    box-sizing: border-box; 
+    
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 /* Icon Styling */
@@ -56,4 +55,26 @@
 .buttonText {
     margin: 0;
     line-height: 1; /* Helps with vertical alignment */
+}
+
+
+@media (max-width: 1024px) {
+    .customButton {
+        /* On mobile, we want it to be a full-width block to match the search bar */
+        width: 100%; 
+        padding: 1rem; /* Better thumb target */
+    }
+}
+
+.buttonIcon {
+    width: 22px; /* Increased slightly for better visibility on mobile */
+    height: 22px;
+    display: block; 
+    flex-shrink: 0; /* Prevents the icon from squashing if the text is long */
+}
+
+.buttonText {
+    margin: 0;
+    line-height: 1;
+    font-size: 1rem; /* Clearer font size for mobile */
 }

@@ -74,8 +74,6 @@ if (loading) return <p>Loading...</p>;
                 <MessagesTopCard />
 
 
-
-
       <div className='messCont'>
 
 {msg.map((item) => {

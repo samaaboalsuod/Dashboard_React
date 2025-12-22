@@ -1,25 +1,46 @@
 
-.searchBar{
-    width: 25vw;
-    padding: 1rem;
+.searchBar {
+    /* DESKTOP DEFAULT */
+    width: 25vw; 
+    min-width: 280px; /* Safety floor: don't let it get too small on desktop */
+    padding: 0.8rem 1rem;
     background-color: var(--fields_Bg);
     border-radius: 4px;
-
     display: flex;
     align-items: center;
     justify-content: flex-start;
     gap: .5rem;
+    box-sizing: border-box;
+    transition: width 0.3s ease;
 }
 
 .searchInput {
     border: none;
     background: transparent;
     outline: none;
-    font-size: 14px;  /* match your h6 style */
-    color: inherit;   /* keep font color */
-    width: 100%;      /* make it expand naturally */
-  }
+    font-size: 14px;
+    color: inherit;
+    width: 100%;
+}
   
   .searchInput::placeholder {
     color: var(--placeHolder); /* or your placeholder color */
   }
+
+  @media (max-width: 1024px) {
+    .searchBar {
+        /* On tablet/mobile, let it take most of the row or all of it */
+        width: 100%; 
+        max-width: 100%; /* Overrides the restricted desktop feel */
+    }
+}
+
+@media (max-width: 480px) {
+    .searchBar {
+        padding: 0.7rem; /* Slim it down slightly for tiny phones */
+    }
+    
+    .searchInput {
+        font-size: 16px; /* Prevents iOS from auto-zooming on input focus */
+    }
+}
