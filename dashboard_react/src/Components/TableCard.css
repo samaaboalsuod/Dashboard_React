@@ -1,25 +1,18 @@
 .tableCard {
   width: 100%;
-
   align-items: center;
   gap: 16px;
   padding: 2rem 1rem;
   border-radius: 8px;
   box-sizing: border-box;
-
-    display: grid;
-  grid-template-columns:
-    minmax(120px, 160px)  /* title */
-    
-    1fr                   /* subtitle */
-    minmax(230px, 300px)  /* middle text / count */
-    minmax(100px, 100px)  /* date */
-    minmax(120px, 200px); /* actions */
-
-    transition: 
-        transform 0.2s ease-out, 
-        box-shadow 0.2s ease-out,
-        background-color 0.2s ease-out;
+  display: grid;
+  grid-template-columns: 
+    minmax(120px, 160px) 
+    1fr 
+    minmax(230px, 300px) 
+    minmax(100px, 100px) 
+    minmax(120px, 200px);
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, background-color 0.2s ease-out;
 }
 
 .tableCard:hover {
@@ -145,4 +138,56 @@
   /* stack subtitle and middle text smaller or hide middle column if needed */
   .tableCard { grid-template-columns: 140px 1fr 140px 100px 80px; }
   .middleText, .subtitleText { font-size: 0.9rem; }
+}
+
+@media (max-width: 900px) {
+  .tableCard {
+    /* Kill the grid and its fixed minmax values */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 1.5rem;
+  }
+
+  /* Make every column take full width of the phone */
+  .col {
+    width: 100%;
+    justify-content: flex-start !important;
+  }
+
+  /* 1. Title stays on top */
+  .titleCol .titleText {
+    font-size: 1.1rem;
+  }
+
+  /* 2. Subtitle & Middle Text: Remove 'nowrap' so text can wrap on small screens */
+  .subtitleCol .subtitleText,
+  .middleCol .middleText {
+    white-space: normal; /* This prevents the text from pushing the screen wide */
+    overflow: visible;
+    text-overflow: clip;
+  }
+
+  /* 3. Date & Actions: We put them on the same line to save space */
+  .dateCol, .actionsCol {
+    display: inline-flex;
+    margin-top: 5px;
+  }
+
+  .actionsCol {
+    padding-top: 10px;
+    border-top: 1px solid rgba(0,0,0,0.05); /* Visual separator for buttons */
+    justify-content: space-between !important;
+  }
+}
+
+@media (max-width: 480px) {
+    .tableCard {
+        padding: 1rem;
+    }
+    
+    .countBadge {
+        margin-top: 5px;
+    }
 }
