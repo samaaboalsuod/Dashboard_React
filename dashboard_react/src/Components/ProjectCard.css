@@ -1,6 +1,6 @@
  .project-card {
           display: grid;
-          grid-template-columns: 120px 140px 80px 1.4fr 140px;
+          grid-template-columns: 180px 160px 80px 1.4fr 140px;
           align-items: center;
           gap: 20px;
           padding: 25px 30px;

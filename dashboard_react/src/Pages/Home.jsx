@@ -47,6 +47,8 @@ const chartData2 = [
 const Home = () => {
 
     const [recentProjects, setRecentProjects] = useState([]);
+    const [categories, setCategories] = useState([]);
+    const [drafts, setDrafts] = useState([]);
 
     const getRecentProjects = async () => {
         const { data, error } = await supabase
@@ -59,14 +61,59 @@ const Home = () => {
         if (data) setRecentProjects(data);
     };
 
+const getDashboardStats = async () => {
+        const { data, error } = await supabase
+            .from('Categories')
+            .select('title, Project_Numbers, icon, percentage, color');
+
+        if (error) {
+            console.error("Categories Fetch Error:", error);
+            return;
+        }
+
+        if (data) {
+            // Define your desired order by Title
+            const desiredOrder = [
+                "Total Projects",
+                "UI/UX Design",
+                "Front End",
+                "Graphic Design",
+                "3D Modeling",
+                "Photography"
+            ];
+
+            // Sort the data based on the desiredOrder array
+            const sortedData = data.sort((a, b) => {
+                return desiredOrder.indexOf(a.title) - desiredOrder.indexOf(b.title);
+            });
+
+            setCategories(sortedData);
+        }
+    };
+
+    const getDrafts = async () => {
+        const { data, error } = await supabase
+            .from('Projects')
+            .select(`*, Categories ( color )`)
+            // Only pull projects that are NOT published
+            .eq('status', 'Unpublished') 
+            .limit(3);
+
+        if (error) console.error("Drafts Error:", error);
+        if (data) setDrafts(data);
+    };
+
+
     useEffect(() => {
         getRecentProjects();
+        getDashboardStats();
+        getDrafts();
     }, []);
 
-    const formatDate = (dateString) => {
-        if (!dateString) return "";
-        return new Date(dateString).toLocaleDateString("en-US");
-    };
+    // const formatDate = (dateString) => {
+    //     if (!dateString) return "";
+    //     return new Date(dateString).toLocaleDateString("en-US");
+    // };
     
     return ( <>
     
@@ -95,12 +142,18 @@ const Home = () => {
 
                     <div className='overCardsCont'>
 
-                        <OverviewCard title="Total Projects" number="24" percentage="+12%" icon={projectsCardIcon} color="#FBF3FF" />
-                        <OverviewCard title="UI/UX Design" number="10" percentage="50% of total" icon={UXcardIcon} color="#FFF3F8" />
-                        <OverviewCard title="Front End" number="4" percentage="20% of total" icon={FrontCardIcon} color="#F4F3FF" />
-                        <OverviewCard title="Graphic Design" number="3" percentage="10% of total" icon={GraphicCardIcon} color="#F3FBFF" />
-                        <OverviewCard title="3D Modeling" number="3" percentage="12% of total" icon={DCardIcon} color="#F3FFF4" />
-                        <OverviewCard title="Photography" number="9" percentage="20% of total" icon={PhotoCardIcon} color="#FEFFF3" />
+
+            {/* 2. Dynamic Category Cards */}
+            {categories.map((cat, index) => (
+                <OverviewCard 
+                    key={index}
+                    title={cat.title} 
+                    number={cat.Project_Numbers} 
+                    percentage={cat.percentage} 
+                    icon={cat.icon} // This uses the URL from your DB
+                    color={cat.color} 
+                />
+            ))}
 
                     </div>
 
@@ -112,16 +165,25 @@ const Home = () => {
 
                        <div className='draftCont'>
 
-                            <ProjectCard
-                               title="Giza Zoo"
-                               description="UI/UX Design"
-                               date="21/09/2025"
-                               tags={['Tags', 'Date', 'Goal Statement', 'Arabic Font', 'Description']}
-                               bgColor="#FFF3F8"
-                               onContinue={() => console.log('Giza Zoo')}
-                            />
+{drafts.map((proj) => (
+                <ProjectCard
+                    key={proj.id}
+                    title={proj.title || "Untitled Draft"}
+                    description={proj.category}
+                    date={proj.date || "No Date"}
+                    // DYNAMIC TAGS: We check for NULL values here
+                    tags={[
+                        !proj.pageTitle && "Title",
+                        !proj.date && "Date",
+                        !proj.metaDescription && "Description",
+                        !proj.Cover_Media && "Media"
+                    ].filter(Boolean)} // This removes 'false' values from the list
+                    bgColor={proj.Categories?.color || "#f9f9f9"}
+                    onContinue={() => console.log(`Editing project ${proj.id}`)}
+                />
+            ))}
 
-                            <ProjectCard
+                            {/* <ProjectCard
                                title="Pyramids of Giza"
                                description="Photography"
                                date="14/11/2024"
@@ -137,7 +199,7 @@ const Home = () => {
                                tags={['Tools', 'Date', 'Project Media', 'Hero Media']}
                                bgColor="#F3FBFF"
                                onContinue={() => console.log('Giza Zoo')}
-                            />
+                            /> */}
                        </div>
 
 
@@ -164,9 +226,6 @@ const Home = () => {
                     title={proj.title}
                     category={proj.category}
                     categoryColor={proj.Categories?.color || proj.Categories?.[0]?.color}
-                    time={formatDate(proj.created_at)}
-                    // Notice: We are NOT passing slug, projectState, or publishState here
-                    // So they will stay hidden on the Home page automatically.
                 />
             ))}
 
