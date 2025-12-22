@@ -159,7 +159,7 @@ const getDashboardStats = async () => {
 
                        <div className='draftCont'>
 
-{drafts.map((proj) => (
+            {drafts.map((proj) => (
                 <ProjectCard
                     key={proj.id}
                     title={proj.title || "Untitled Draft"}
@@ -177,23 +177,6 @@ const getDashboardStats = async () => {
                 />
             ))}
 
-                            {/* <ProjectCard
-                               title="Pyramids of Giza"
-                               description="Photography"
-                               date="14/11/2024"
-                               tags={['Place', 'Shutter', 'Description']}
-                               bgColor="#FEFFF3"
-                               onContinue={() => console.log('Giza Zoo')}
-                            />
-
-                            <ProjectCard
-                               title="Fruit Painting"
-                               description="Graphic Design"
-                               date="21/09/2025"
-                               tags={['Tools', 'Date', 'Project Media', 'Hero Media']}
-                               bgColor="#F3FBFF"
-                               onContinue={() => console.log('Giza Zoo')}
-                            /> */}
                        </div>
 
 
@@ -208,10 +191,6 @@ const getDashboardStats = async () => {
                        <BigCardTitle title="Recent added projects" />
 
                        <div className='overCardsCont'>
-
-                          {/* <RecentCard image={placeHoldImg} title="Ummah Game App"  category="UI/UX Design"  time="03/04/2025" />
-                          <RecentCard image={placeHoldImg} title="Covertina Brand Manual"  category="Graphic Design"  time="05/10/2025" />
-                          <RecentCard image={placeHoldImg} title="Robot"  category="3D Modeling"  time="08/15/2025" /> */}
 
                           {recentProjects.map((proj) => (
                 <RecentCard

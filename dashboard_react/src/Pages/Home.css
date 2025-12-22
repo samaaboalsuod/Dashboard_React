@@ -77,11 +77,7 @@ header{
     align-items: center;
 }
 
-/* .MainArea{
-    display: grid;
-    grid-template-columns: 280px 1fr; 
-    height: fit-content;
-} */
+
  .MainArea {
     display: grid;
     /* We keep your 280px but use a variable that falls back to it */
@@ -91,24 +87,6 @@ header{
     /* Smooth transition so it doesn't "snap" when resizing */
     transition: grid-template-columns 0.3s ease;
 }
-
-/* .sideBar {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  background: var(--cards_bg);
-  padding: 2rem 1.5rem;
-  overflow-y: auto;
-} */
-
-
-/* .contentArea {
-    padding: 25px 30px;
-
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  } */
 
   .contentArea {
     padding: 25px 30px;
@@ -132,6 +110,7 @@ header{
         /* Slightly less padding to give your cards more room */
         padding: 20px 15px; 
     }
+
 }
 
 .toptwobut{
@@ -159,21 +138,16 @@ header{
     padding: 1rem;
 }
 
-.sec1{
+.sec1 {
     width: 100%;
-    padding: 1rem;
-
+    padding: 1rem; /* Increased slightly for better mobile feel */
     border-radius: 8px;
-    border: 1px solid  #F1D6FF;
+    border: 1px solid #F1D6FF;
     box-shadow: 0 0 4px 0 rgba(136, 18, 139, 0.10);
-
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
     gap: 3rem;
-
-    overflow: hidden;
+    box-sizing: border-box; /* Ensures padding doesn't add to width */
 }
 
 .column{
@@ -199,6 +173,13 @@ header{
     flex-direction: column;
     gap: 1rem;
 }
+.overCardsCont, 
+.draftCont {
+    display: flex;
+    flex-wrap: wrap; /* CRITICAL: Allows cards to move to next line */
+    /* gap: 1.5rem; */
+    width: 100%;
+}
 
 .number{
     font-size: 4.5rem;
@@ -221,37 +202,44 @@ header{
     height: auto;
 }
 
-.mapSecCont{
+.mapSecCont {
     width: 100%;
-    height: 300px;
-
+    padding: 1rem 0;
     display: flex;
     justify-content: space-between;
-    /* align-items: center; */
+    align-items: flex-start; /* Keeps items aligned to top */
+    gap: 2rem; 
 }
 
-.worldMap{
-    width: 50%;
-
-    background-color: rgba(0, 255, 42, 0);
-    object-fit: cover;
-
+.worldMap {
+    width: 50%; /* Your original desktop width */
     display: flex;
     justify-content: center;
     align-items: center;
+    /* FIX: Prevents the container from growing taller than the screen */
+    max-height: 400px; 
+    overflow: hidden; 
 }
 
-.mapDataSec{
-    width: 40%;
+.worldMap img {
+    /* FIX: This is the most important part */
+    width: 100%;
+    height: auto;
+    max-width: 100%; /* Ensures it never exceeds the parent width */
+    max-height: 100%; /* Ensures it never exceeds the parent height */
+    object-fit: contain; /* Keeps the map proportions perfect without cropping */
+}
 
-    /* background-color: #9972A6; */
+.mapDataSec {
+    width: 40%;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 2rem; /* Increased gap for better readability */
 }
 
-.mapTitle{
+.mapTitle {
     display: flex;
+    align-items: baseline;
     gap: 1rem;
 }
 
@@ -271,30 +259,75 @@ header{
     font-size: .9rem;
 }
 
-.chartsCont{
+.chartsCont {
     width: 100%;
-
     display: flex;
     justify-content: space-between;
     gap: 2rem;
+    box-sizing: border-box;
 }
 
-.sec2{
-    width: 50%;
-    padding: 1rem;
-
+.sec2 {
+    width: 50%; /* Two side-by-side on desktop */
+    padding: 1.5rem; /* Slightly more padding for a "Big Card" look */
     border-radius: 8px;
-    border: 1px solid  #F1D6FF;
+    border: 1px solid #F1D6FF;
     box-shadow: 0 0 4px 0 rgba(136, 18, 139, 0.10);
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 2rem;
-
     overflow: hidden;
+    background-color: var(--cards_bg);
+    box-sizing: border-box;
 }
 .sec2 h4{
     width: 100%;
+}
+
+
+@media (max-width: 1024px) {
+    .mapSecCont {
+        /* Stack map and data vertically */
+        flex-direction: column; 
+        align-items: center;
+        gap: 3rem;
+    }
+
+    .worldMap {
+        width: 100%; /* Map takes full width */
+        max-width: 500px; /* Prevents map from getting comically large on tablets */
+    }
+
+    .mapDataSec {
+        width: 100%; /* Data takes full width below the map */
+    }
+
+    .chartsCont {
+        /* Stack the two chart boxes vertically */
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .sec2 {
+        width: 100%; /* Take full width of the content area */
+        padding: 2rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .mapTitle h2 {
+        font-size: 2rem; /* Scale down text for small phones */
+    }
+    
+    .mapSecCont {
+        padding: 0.5rem 0;
+    }
+
+    .sec2 {
+        padding: 1rem 0.5rem;
+        overflow-x: auto;
+    }
+
 }
