@@ -12,6 +12,7 @@ import CalendarIcon from '../Assets/calIcon.svg'
 import profileIcon from '../Assets/proIcon.svg'
 import MessageIcon from '../Assets/messIcon.svg'
 import SettingIcon from '../Assets/settIcon.svg'
+import CateIcon from '../Assets/cateIcon.svg'
 
 
 
@@ -25,6 +26,7 @@ const TheSideBar = () => {
             <Link to="/"> <SideBar barIcon={DashIcon} barAction="Dashboard" isActive={true} /> </Link>
             <Link to="/PagesList">  <SideBar  barIcon={PagesIcon}  barAction="Pages" isActive={false} /> </Link>
             <Link to="/Messages"> <SideBar  barIcon={MailIcon}  barAction="E-mail" isActive={false} />  </Link>
+            <Link to="/Categories"> <SideBar  barIcon={CateIcon}  barAction="Categories" isActive={false} />  </Link>
             {/* <Link to="/">  <SideBar  barIcon={ProjectIcon}  barAction="Projects" isActive={false} /> </Link> */}
             <Link to="/">  <SideBar  barIcon={CalendarIcon}  barAction="Calendar" isActive={false} /> </Link>
             {/* <Link to="/">  <SideBar  barIcon={profileIcon}  barAction="Profile" isActive={false} /> </Link> */}

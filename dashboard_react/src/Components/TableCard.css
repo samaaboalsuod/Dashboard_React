@@ -48,6 +48,7 @@
 .col {
   display: flex;
   align-items: center;
+  min-width: 0;
 }
 
 /* 1. Title column */
