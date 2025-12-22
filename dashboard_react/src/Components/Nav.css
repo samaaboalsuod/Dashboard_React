@@ -1,46 +1,83 @@
-
-nav{
+/* ============================================================
+   1. DESKTOP STYLES (Your Original Design)
+   ============================================================ */
+.navbar-container {
     width: 96%;
     height: 6vh;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin: 0 auto;
 }
 
-.logoPart{
+.logoPart {
     width: 150px;
-    max-width: 200px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    /* background-color: aqua; */
 }
 
-.logo{
-    width: 30%;
+.logo {
+    width: 35px;
 }
 
-.pageTitle{
-    max-width: 30vw;
-    /* background-color: rgba(0, 255, 255, 0.21); */
+.userName {
+    font-family: var(--font);
+    color: var(--dark_Purple);
 }
 
-.navIconCont{
-    max-width: 300px;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-
-    /* background-color: aqua; */
+.pageTitle {
+    flex: 1;
+    text-align: center;
+    font-family: var(--font);
+    color: var(--dark_Purple);
 }
 
-.navHalf{
+.navHalf {
     width: 60%;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     gap: 4rem;
+}
+
+.navIconCont {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* ============================================================
+   2. MOBILE STYLES (Choice 2: Clean Top Bar)
+   ============================================================ */
+@media (max-width: 900px) {
+    /* 1. Hide the elements you don't want on mobile */
+    .userName, 
+    .pageTitle, 
+    .searchWrap {
+        display: none !important;
+    }
+
+    /* 2. Reset the container for a simple Logo-Left / Icons-Right look */
+    .navbar-container {
+        justify-content: space-between;
+        padding: 0 10px;
+    }
+
+    /* 3. Reset navHalf to stop it from taking up 60% width */
+    .navHalf {
+        width: auto !important;
+        gap: 0 !important;
+        display: flex !important;
+    }
+
+    /* 4. Ensure icons are spaced nicely */
+    .navIconCont {
+        gap: 0.75rem !important;
+    }
+    
+    /* Ensure logo doesn't shift */
+    .logoPart {
+        width: auto !important;
+    }
 }
