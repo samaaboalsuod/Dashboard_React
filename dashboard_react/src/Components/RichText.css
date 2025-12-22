@@ -14,45 +14,74 @@
   background-color: #eee9f0;
   border-radius: 10px;
   overflow: hidden;
+  border: 1px solid transparent;
 }
 
+/* --- TOOLBAR STYLES --- */
 .richtext-toolbar {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 1rem 14px;
-  border-bottom: 1px solid #d8cfe0;
-  color: #8d7a9e;
-  font-size: 14px;
+  gap: 10px;
+  padding: 0.5rem 14px;
+  border-bottom: 1px solid #d8cfe0 !important;
+  background-color: #eee9f0 !important;
+  flex-wrap: wrap;
 }
 
-.richtext-toolbar span {
-  cursor: default;
+/* Make Quill buttons look like your original spans */
+.richtext-toolbar button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #8d7a9e;
+  font-size: 14px;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.richtext-toolbar button:hover {
+  color: #4A0C77;
 }
 
 .richtext-toolbar .divider {
   width: 1px;
   height: 18px;
   background-color: #d8cfe0;
+  margin: 0 4px;
 }
 
-.richtext-textarea {
-  width: 100%;
+/* --- QUILL TEXT AREA STYLES --- */
+.ql-container.ql-snow {
+  border: none !important; /* Remove default Quill border */
+  font-family: inherit;
+}
+
+.ql-editor {
   min-height: 140px;
-  padding: 14px;
-  border: none;
-  outline: none;
-  resize: none;
-  background-color: transparent;
+  padding: 14px !important;
   font-size: 14px;
   color: #6a4c7a;
+  line-height: 1.5;
 }
 
-.richtext-textarea::placeholder {
-  color: #b8a9c4;
+.ql-editor.ql-blank::before {
+  color: #b8a9c4 !important;
+  font-style: normal;
+  left: 14px;
 }
 
 .richtext-counter {
   font-size: 12px;
   color: #b0a3bc;
+}
+
+/* --- RESPONSIVE TOOLBAR --- */
+@media (max-width: 480px) {
+  .richtext-toolbar {
+    gap: 5px;
+    padding: 10px;
+  }
 }

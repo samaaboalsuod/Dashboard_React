@@ -1,19 +1,56 @@
-.shortInputsCont{
+.shortInputsCont {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    gap: 1.5rem; /* Added a gap so inputs don't touch when side-by-side */
+    box-sizing: border-box;
 }
 
-.featureCont{
+.featureCont {
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    gap: 2%; /* Using a percentage gap for fluid desktop look */
+    box-sizing: border-box;
 }
 
-.halfCol{
+.halfCol {
     width: 49%;
     display: flex;
     flex-direction: column;
     gap: 2rem;
+}
+
+@media (max-width: 768px) {
+    .shortInputsCont {
+        /* Stack the inputs vertically */
+        flex-direction: column; 
+        /* Ensure there is space between stacked inputs */
+        gap: 1rem; 
+    }
+
+    /* We must ensure the ShortInput component itself expands to 100% */
+    .shortInputsCont > * {
+        width: 100% !important;
+    }
+}
+@media (max-width: 1024px) {
+    .featureCont {
+        /* Stack the two columns */
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .halfCol {
+        /* Take up full width when stacked */
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .halfCol {
+        /* Tighten the vertical gap slightly on small phones */
+        gap: 1.5rem;
+    }
 }

@@ -290,8 +290,6 @@ const ProjectEdit = () => {
                         <MediaUpload title="Feature Media" icon={uploadIcon} centerText="Upload a Photo / Video" helperText="5 MB max" />
                       </div>
 
-
-
                     </div>
                     
                   </div>
