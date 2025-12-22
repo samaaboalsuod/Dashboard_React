@@ -13,27 +13,22 @@ const RecentCard = ({ image, title, category, time, slug, projectState, publishS
       <div className="recentData">
         <h4>{title}</h4>
 
-        {category && (
-          <h6 className="categoryTag">
-            {category}
-          </h6>
-        )}
+        {category && <h6 className="categoryTag">{category}</h6>}
 
+        {/* ONLY show slug if it exists */}
         {slug && <span className="slugText">{slug}</span>}
 
-        <div className="stateRow">
-          {projectState && (
-            <span className="stateTag state-project">
-                {projectState}
-            </span>
-          )}
-
-          {publishState && (
-            <span className={`stateTag state-${publishState.toLowerCase()}`}>
-              {publishState}
-            </span>
-          )}
-        </div>
+        {/* ONLY show stateRow if at least one state is provided */}
+        {(projectState || publishState) && (
+          <div className="stateRow">
+            {projectState && <span className="stateTag state-project">{projectState}</span>}
+            {publishState && (
+              <span className={`stateTag state-${publishState.toLowerCase()}`}>
+                {publishState}
+              </span>
+            )}
+          </div>
+        )}
 
         <p>{time}</p>
 

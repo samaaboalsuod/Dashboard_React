@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component,useEffect, useState } from 'react';
+import { supabase } from '../Supabase';
 import './Home.css'
 
 import Nav from '../Components/Nav';
@@ -44,6 +45,29 @@ const chartData2 = [
 
 
 const Home = () => {
+
+    const [recentProjects, setRecentProjects] = useState([]);
+
+    const getRecentProjects = async () => {
+        const { data, error } = await supabase
+            .from('Projects')
+            .select(`*, Categories ( color )`)
+            .order('created_at', { ascending: false }) // Newest first
+            .limit(3); // Only 3 items
+
+        if (error) console.error("Home Fetch Error:", error);
+        if (data) setRecentProjects(data);
+    };
+
+    useEffect(() => {
+        getRecentProjects();
+    }, []);
+
+    const formatDate = (dateString) => {
+        if (!dateString) return "";
+        return new Date(dateString).toLocaleDateString("en-US");
+    };
+    
     return ( <>
     
     <header>
@@ -129,9 +153,22 @@ const Home = () => {
 
                        <div className='overCardsCont'>
 
-                          <RecentCard image={placeHoldImg} title="Ummah Game App"  category="UI/UX Design"  time="03/04/2025" />
+                          {/* <RecentCard image={placeHoldImg} title="Ummah Game App"  category="UI/UX Design"  time="03/04/2025" />
                           <RecentCard image={placeHoldImg} title="Covertina Brand Manual"  category="Graphic Design"  time="05/10/2025" />
-                          <RecentCard image={placeHoldImg} title="Robot"  category="3D Modeling"  time="08/15/2025" />
+                          <RecentCard image={placeHoldImg} title="Robot"  category="3D Modeling"  time="08/15/2025" /> */}
+
+                          {recentProjects.map((proj) => (
+                <RecentCard
+                    key={proj.id}
+                    image={proj.Cover_Media || proj.Thumbnail || placeHoldImg}
+                    title={proj.title}
+                    category={proj.category}
+                    categoryColor={proj.Categories?.color || proj.Categories?.[0]?.color}
+                    time={formatDate(proj.created_at)}
+                    // Notice: We are NOT passing slug, projectState, or publishState here
+                    // So they will stay hidden on the Home page automatically.
+                />
+            ))}
 
 
                        </div>
