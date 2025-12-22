@@ -26,3 +26,8 @@
   font-size: 0.75rem;
   color: #b0a3bc;
 }
+.tagButton {
+    flex-shrink: 0; /* CRITICAL: Stops the button from squashing to fit the screen */
+    white-space: nowrap; /* Keeps the text on one line inside the button */
+    display: inline-flex;
+}

@@ -47,12 +47,20 @@ const PagesList = () => {
 
     return (
         <>
-            <header><Nav pageTitle="Pages List" /></header>
+            <header>
+                <Nav pageTitle="Pages List" />
+            </header>
+
             <section className='MainArea'>
+
                 <TheSideBar />
+
                 <div className='contentArea'>
+
                     <div className='AllContent'>
+
                         <PageTopCont />
+
                         <div className='overCardsCont'>
                             
                             {staticPages.length === 0 && dynamicProjects.length === 0 && (
@@ -98,9 +106,13 @@ const PagesList = () => {
     />
 ))}
                         </div>
+
                     </div>
+
                 </div>
+
             </section>
+            
             <Footer />
         </>
     );
