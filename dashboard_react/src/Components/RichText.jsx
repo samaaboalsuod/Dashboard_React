@@ -1,14 +1,12 @@
-import React, { useState, useId } from "react";
+import React, { useId } from "react"; // Removed useState here because the parent will hold it
 import ReactQuill from "react-quill-new";
 import "react-quill-new/dist/quill.snow.css"; 
 import "./RichText.css";
 
-const RichText = ({ title, placeholder, maxChars }) => {
-  const [value, setValue] = useState("");
+// Added 'value' and 'onChange' to the props
+const RichText = ({ title, placeholder, maxChars, value, onChange }) => {
   
-  // This hook creates a unique string like ":r1:" for every component instance
   const reactId = useId();
-  // We clean it up to make it a valid HTML ID (removing colons)
   const toolbarId = `toolbar-${reactId.replace(/:/g, "")}`;
 
   const modules = {
@@ -18,10 +16,10 @@ const RichText = ({ title, placeholder, maxChars }) => {
   };
 
   const handleChange = (content, delta, source, editor) => {
-    // We strip HTML tags to count actual characters
     const plainText = editor.getText().trim();
+    // Only send the update to the parent if it's within character limits
     if (plainText.length <= maxChars) {
-      setValue(content);
+      onChange(content); 
     }
   };
 
@@ -30,7 +28,6 @@ const RichText = ({ title, placeholder, maxChars }) => {
       <label className="richtext-label">{title}</label>
 
       <div className="richtext-editor">
-        {/* Dynamic unique ID applied here */}
         <div id={toolbarId} className="richtext-toolbar">
           <button className="ql-bold">B</button>
           <button className="ql-italic"><i>I</i></button>
@@ -48,8 +45,8 @@ const RichText = ({ title, placeholder, maxChars }) => {
 
         <ReactQuill
           theme="snow"
-          value={value}
-          onChange={handleChange}
+          value={value} // Parent's state
+          onChange={handleChange} // Parent's state setter
           placeholder={placeholder}
           modules={modules}
           className="richtext-quill"
@@ -57,7 +54,7 @@ const RichText = ({ title, placeholder, maxChars }) => {
       </div>
 
       <span className="richtext-counter">
-        {value.replace(/<[^>]*>/g, "").length}/{maxChars} characters
+        {value?.replace(/<[^>]*>/g, "").length || 0}/{maxChars} characters
       </span>
     </div>
   );
