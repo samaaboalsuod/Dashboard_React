@@ -1,4 +1,5 @@
-import React, { Component,useState } from 'react';
+import React, { Component,useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { supabase } from '../Supabase';
 import './ProjectEdit.css'
 import Footer from '../Components/Footer';
@@ -30,11 +31,15 @@ import modelingIcon from '../Assets/modelingIcon.svg'
 
 
 
-
-
-
-
 const ProjectEdit = () => {
+
+    const { id } = useParams();
+    const navigate = useNavigate();
+
+    // Helper to handle the navigation
+    const handleEdit = (id) => {
+        navigate(`/ProjectEdit/${id}`);
+    };
 
   const [title, setTitle] = useState("");
   const [role, setRole] = useState("");
@@ -67,72 +72,41 @@ const ProjectEdit = () => {
   const [iso, setIso] = useState("");
   const [location, setLocation] = useState("");
 
-  
+useEffect(() => {
+    const fetchProjectData = async () => {
+        if (id) {
+            const { data, error } = await supabase
+                .from("Projects")
+                .select("*")
+                .eq("id", id)
+                .single();
 
-// async function handleCreateProject() {
-//   const { data, error } = await supabase
-//     .from("Projects")
-//     .insert([
-//       { 
-//         title: title,
-//         Role: role,
-//         Discreption: description,
-//         category: category,
-//         date: date,
-//         Duration: duration,
-//         tools: tools,
-//         pageTitle: pageTitle,
-//         slug: slug,
-//         metaDescription: metaDescription,
-
-//         Colors: colors, 
-//         Features: [
-//           {
-//             Name: f1Name,
-//             Discreption: f1Desc,
-//             Img: f1Media ? f1Media.name : "",
-//             ImgAlt: f1Name
-//           },
-//           {
-//             Name: f2Name,
-//             Discreption: f2Desc,
-//             Img: f2Media ? f2Media.name : "",
-//             ImgAlt: f2Name
-//           }
-//         ],
-//         Cover_Media: heroMedia ? heroMedia.name : "",
-//         images: galleryMedia ? { name: galleryMedia.name } : null,
-
-//         Fonts_Display: [
-//           {
-//             fontName: font1Name,
-//             alphabet: font1Alphabet
-//           },
-//           {
-//             fontName: font2Name,
-//             alphabet: font2Alphabet
-//           }
-//         ],
-//         Toggles: [
-//           {
-//             toggle: "Problem Statement",
-//             discreption: problemStatement 
-//           },
-//           {
-//             toggle: "Goal Statement",
-//             discreption: goalStatement
-//           }
-//         ],
-//         video: prototypeVideo ? prototypeVideo.name : "",
-//       }
-//     ]);
-
-//   if (error) {
-//     console.error("Error saving project:", error.message);
-//   } else {
-//     alert("Project saved successfully with colors!");
-//   }
-// }
+            if (data && !error) {
+                // This "fills" the form with the old data
+                setTitle(data.title || "");
+                setRole(data.Role || "");
+                setDescription(data.Discreption || "");
+                setCategory(data.category || "");
+                setDate(data.date || "");
+                setDuration(data.Duration || "");
+                setTools(data.tools || "");
+                setPageTitle(data.pageTitle || "");
+                setSlug(data.slug || "");
+                setMetaDescription(data.metaDescription || "");
+                setColors(data.Colors || []);
+                
+                // For Photography Specs
+                if (data.Photography_Specs) {
+                    setShutterSpeed(data.Photography_Specs.shutterSpeed || "");
+                    setAperture(data.Photography_Specs.aperture || "");
+                    setIso(data.Photography_Specs.iso || "");
+                    setLocation(data.Photography_Specs.location || "");
+                }
+            }
+        }
+    };
+    fetchProjectData();
+}, [id]);
 
 async function handleCreateProject() {
     // 1. Prepare Photography Object
@@ -189,6 +163,79 @@ async function handleCreateProject() {
     if (error) console.error("Error:", error.message);
     else alert("Project saved successfully!");
   }
+
+async function handleUpdateProject() {
+    // 1. We prepare the data exactly like you do in the create function
+    const photographyData = { shutterSpeed, aperture, iso, location };
+
+    const featuresData = [
+      { Name: f1Name, Discreption: f1Desc, Img: f1Media?.name || "", ImgAlt: f1Name },
+      { Name: f2Name, Discreption: f2Desc, Img: f2Media?.name || "", ImgAlt: f2Name }
+    ].filter(f => f.Name.trim() !== "");
+
+    // 2. We use .update() instead of .insert()
+    const { error } = await supabase
+      .from("Projects")
+      .update({ 
+          title,
+          category,
+          date,
+          tools,
+          slug,
+          pageTitle,
+          metaDescription,
+          Role: role,
+          Duration: duration,
+          Discreption: description,
+          // Note: Only updating filenames if they exist
+          Cover_Media: heroMedia?.name || undefined, 
+          images: galleryMedia ? { name: galleryMedia.name } : undefined,
+          video: prototypeVideo?.name || undefined,
+          Colors: colors.length > 0 ? colors : null,
+          Features: featuresData,
+          Photography_Specs: shutterSpeed ? photographyData : null 
+      })
+      .eq("id", id); // THIS IS THE MOST IMPORTANT LINE: It tells Supabase which row to fix
+
+    if (error) {
+        console.error("Error updating:", error.message);
+        alert("Update failed!");
+    } else {
+        alert("Project updated successfully!");
+        navigate('/PagesList'); // Send user back to the list
+    }
+}
+
+
+
+  useEffect(() => {
+    if (id) {
+        const fetchProject = async () => {
+            const { data, error } = await supabase
+                .from("Projects")
+                .select("*")
+                .eq("id", id)
+                .single();
+
+            if (data && !error) {
+                // Fill the inputs with the data from Supabase
+                setTitle(data.title || "");
+                setRole(data.Role || "");
+                setDescription(data.Discreption || "");
+                setCategory(data.category || "");
+                setDate(data.date || "");
+                setDuration(data.Duration || "");
+                setTools(data.tools || "");
+                setPageTitle(data.pageTitle || "");
+                setSlug(data.slug || "");
+                setMetaDescription(data.metaDescription || "");
+                setColors(data.Colors || []);
+                // Add any other fields you want to auto-fill here
+            }
+        };
+        fetchProject();
+    }
+}, [id]);
 
 
     return ( <>
@@ -294,7 +341,7 @@ async function handleCreateProject() {
   onChange={(e) => setGalleryMedia(e.target.files[0])} 
 />
 
-                <Button BtnText="Save Changes" onClick={handleCreateProject} />
+                <Button BtnText={id ? "Save Changes" : "Create Project"} onClick={id ? handleUpdateProject : handleCreateProject} />
 
                   </div>
 
@@ -334,7 +381,7 @@ async function handleCreateProject() {
     onChange={(content) => setMetaDescription(content)} 
 />
 
-               <Button BtnText="Save Changes" onClick={handleCreateProject} />
+               <Button BtnText={id ? "Save Changes" : "Create Project"} onClick={id ? handleUpdateProject : handleCreateProject} />
 
                   </div>
 
@@ -536,7 +583,7 @@ async function handleCreateProject() {
   onChange={(e) => setPrototypeVideo(e.target.files[0])} 
 />
 
-                    <Button BtnText="Save Changes" onClick={handleCreateProject} />
+                    <Button BtnText={id ? "Save Changes" : "Create Project"} onClick={id ? handleUpdateProject : handleCreateProject} />
 
                     
                 </div>
@@ -709,7 +756,7 @@ async function handleCreateProject() {
   onChange={(e) => setPrototypeVideo(e.target.files[0])}
 />
 
-                    <Button BtnText="Save Changes" onClick={handleCreateProject} />
+                    <Button BtnText={id ? "Save Changes" : "Create Project"} onClick={id ? handleUpdateProject : handleCreateProject} />
 
                     
                 </div>
@@ -869,10 +916,7 @@ async function handleCreateProject() {
                   </div>
 
 
-                    <Button 
-  BtnText="Save Changes" 
-  onClick={handleCreateProject} 
-/>
+                    <Button BtnText={id ? "Save Changes" : "Create Project"} onClick={id ? handleUpdateProject : handleCreateProject} />
 
                     
                 </div>
@@ -932,7 +976,7 @@ async function handleCreateProject() {
                   </div>
 
                   </div>
-                    <Button BtnText="Save Changes" onClick={handleCreateProject} />
+                    <Button BtnText={id ? "Save Changes" : "Create Project"} onClick={id ? handleUpdateProject : handleCreateProject} />
                     
                 </div>
 
@@ -952,7 +996,7 @@ async function handleCreateProject() {
   onChange={(e) => setPrototypeVideo(e.target.files[0])} 
 />
 
-                    <Button BtnText="Save Changes" onClick={handleCreateProject} />
+                    <Button BtnText={id ? "Save Changes" : "Create Project"} onClick={id ? handleUpdateProject : handleCreateProject} />
 
                     
                 </div>

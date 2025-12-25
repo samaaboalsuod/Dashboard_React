@@ -4,3 +4,88 @@
     display: flex;
     flex-direction: column;
 }
+
+.editCategoryPanel {
+    background: white;
+    width: 800px;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* Position the overlay globally over the whole browser */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3); /* Darkens the background */
+    backdrop-filter: blur(8px);    /* Professional blur effect */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999; /* Higher than any other element */
+}
+
+/* The actual white card */
+.editCategoryPanel {
+    background: #ffffff;
+    width: 900px;
+    padding: 50px;
+    border-radius: 30px;
+    box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.modalTitle {
+    color: #5B0C7D;
+    font-size: 28px;
+    margin: 0;
+    font-weight: 600;
+}
+
+.modalInputRow {
+    display: flex;
+    gap: 25px;
+    width: 100%;
+}
+
+.modalRichTextWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.inputLabel {
+    color: #999;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.modalActions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 25px;
+    margin-top: 15px;
+}
+
+.discardBtn {
+    background: white;
+    border: 1px solid #D1D1D1;
+    color: #5B0C7D;
+    padding: 12px 50px;
+    border-radius: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.charCount {
+    font-size: 13px;
+    color: #BBBBBB;
+    margin-top: 5px;
+}

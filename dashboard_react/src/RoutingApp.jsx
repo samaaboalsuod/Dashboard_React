@@ -9,27 +9,30 @@ import PagesList from './Pages/PagesList';
 import Login from './Pages/Login';
 
 const RoutingApp = () => {
-    return ( <>
-    
-    <BrowserRouter>
-       <Routes>
+    return ( 
+        <BrowserRouter>
+            <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/Messages' element={<Messages />} />
+                <Route path='/Categories' element={<Categories />} />
+                <Route path='/Categories/:id' element={<Categories />} />
+                
+                {/* FIX 1: Route for Creating (No ID) */}
+                <Route path='/ProjectEdit' element={<ProjectEdit />} />
+                
+                {/* FIX 2: Route for Editing (With ID) */}
+                <Route path='/ProjectEdit/:id' element={<ProjectEdit />} />
 
-          <Route path='/' element={<Home />} />
-          <Route path='/Messages' element={<Messages />} />
-          <Route path='/Categories' element={<Categories />} />
-          <Route path='/ProjectEdit' element={<ProjectEdit />} />
-          <Route path='/PagesList' element={<PagesList />} />
-          <Route path='/Login' element={<Login />} />
+                <Route path='/PagesList' element={<PagesList />} />
+                <Route path='/Login' element={<Login />} />
 
-          <Route path='/TestAPI:id' element={<TestAPI />} />
+                {/* FIX 3: Added missing slash for TestAPI parameter */}
+                <Route path='/TestAPI/:id' element={<TestAPI />} />
 
-
-          {/* <Route path='*' element={<Error />} /> */}
-
-       </Routes>
-    </BrowserRouter>
-
-    </> );
+                {/* <Route path='*' element={<Error />} /> */}
+            </Routes>
+        </BrowserRouter>
+    );
 }
- 
+
 export default RoutingApp;

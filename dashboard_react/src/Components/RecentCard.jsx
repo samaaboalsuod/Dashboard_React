@@ -1,12 +1,10 @@
 import React from "react";
 import { supabase } from '../Supabase';
 import "./RecentCard.css";
-import binFill from "../Assets/binFill.svg";
-import prevFill from "../Assets/prevFill.svg";
-import editFill from "../Assets/editFill.svg";
+
 import IconImg from "./iconImg";
 
-const RecentCard = ({ image, title, category, time, slug, projectState, publishState, categoryColor, icons = [], onDelete}) => {
+const RecentCard = ({ image, title, category, time, slug, projectState, publishState, categoryColor, icons = [], onDelete, onEdit}) => {
  return (
     <div className="recentCardCont" style={{ backgroundColor: categoryColor }}>
       <img className="recImg" src={image} alt="" />
@@ -29,18 +27,19 @@ const RecentCard = ({ image, title, category, time, slug, projectState, publishS
 
         <p>{time}</p>
 
-        <div className="iconRow">
-          {/* Map through icons and assign onDelete to the bin icon (index 0 or 2 depending on your array) */}
-          {icons.map((src, i) => (
-           <IconImg 
+<div className="iconRow">
+  {icons.map((src, i) => (
+    <IconImg 
       key={i} 
       src={src} 
-      // i === 0 because getIcon("deleteIcon") is the first item in the icons array
-      onClick={i === 0 ? onDelete : undefined} 
-      style={{ cursor: i === 0 ? 'pointer' : 'default' }}
+      onClick={() => {
+        if (i === 0) onDelete(); // First icon: Delete
+        if (i === 2) onEdit();   // Third icon: Edit
+      }} 
+      style={{ cursor: (i === 0 || i === 2) ? 'pointer' : 'default' }}
     />
-          ))}
-        </div>
+  ))}
+</div>
       </div>
     </div>
   );

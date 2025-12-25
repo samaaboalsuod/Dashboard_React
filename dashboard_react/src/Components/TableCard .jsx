@@ -11,6 +11,8 @@ import "./TableCard.css";
  * - status: string (shows status badge in actions column; optional)
  * - variant: "grey" | "transparent" (row background)
  * - icons: array of src strings for small icons (actions)
+ * - onDelete: function to trigger delete
+ * - onEdit: function to trigger edit navigation
  */
 const TableCard = ({
   title,
@@ -22,6 +24,7 @@ const TableCard = ({
   variant = "transparent",
   icons = [],
   onDelete,
+  onEdit, // Added onEdit prop
 }) => {
   return (
     <div className={`tableCard ${variant}`}>
@@ -52,18 +55,23 @@ const TableCard = ({
       {/* 5: Status + Icons */}
       <div className="col actionsCol">
         {status && <span className={`statusBadge ${status.toLowerCase()}`}>{status}</span>}
+        
         <div className="iconsWrap">
-            {icons.map((src, i) => (
-                <img 
-                    key={i} 
-                    src={src} 
-                    alt={`icon-${i}`} 
-                    className="actionIcon"
-                    // If it's the 3rd icon (index 2), give it the delete function
-                    onClick={i === 2 ? onDelete : undefined} 
-                    style={{ cursor: i === 2 ? 'pointer' : 'default' }}
-                />
-            ))}
+          {icons.map((src, i) => (
+            <img 
+              key={i} 
+              src={src} 
+              alt={`icon-${i}`} 
+              className="actionIcon"
+              onClick={() => {
+                // Logic based on the order of icons in Categories.jsx: [Edit, Preview, Delete]
+                if (i === 0) onEdit && onEdit();   // Trigger Edit for index 0
+                if (i === 2) onDelete && onDelete(); // Trigger Delete for index 2
+              }} 
+              // Set pointer only for clickable icons
+              style={{ cursor: (i === 0 || i === 2) ? 'pointer' : 'default' }}
+            />
+          ))}
         </div>
       </div>
     </div>
@@ -71,5 +79,3 @@ const TableCard = ({
 };
 
 export default TableCard;
-
-

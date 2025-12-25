@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import './PagesList.css'
 import Nav from '../Components/Nav';
 import TheSideBar from '../Components/TheSideBar';
@@ -9,10 +11,16 @@ import placeHoldImg from '../Assets/placeHoldImg.jpg';
 import { supabase } from '../Supabase';
 
 const PagesList = () => {
+    const navigate = useNavigate();
+
     const [staticPages, setStaticPages] = useState([]);
     const [dynamicProjects, setDynamicProjects] = useState([]);
     const [systemIcons, setSystemIcons] = useState([]);
     const [loading, setLoading] = useState(true);
+
+    const handleEdit = (id) => {
+        navigate(`/ProjectEdit/${id}`);
+    };
 
     // 1. Fetching Logic
     const fetchData = async () => {
@@ -92,6 +100,8 @@ const PagesList = () => {
                                     time={formatDate(page.created_at)}
                                     icons={[getIcon("deleteIcon"), getIcon("peviewIcon"), getIcon("editIcon")]}
                                     onDelete={() => handleDelete(page.id, 'Pages', setStaticPages)}
+                                    onEdit={() => handleEdit(page.id)}
+                                    
                                 />
                             ))}
 
@@ -109,6 +119,7 @@ const PagesList = () => {
                                     time={formatDate(proj.created_at)}
                                     icons={[getIcon("deleteIcon"), getIcon("peviewIcon"), getIcon("editIcon")]}
                                     onDelete={() => handleDelete(proj.id, 'Projects', setDynamicProjects)}
+                                    onEdit={() => handleEdit(proj.id)}
                                 />
                             ))}
                         </div>
