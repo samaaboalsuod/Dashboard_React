@@ -163,32 +163,50 @@ const Home = () => {
                         </div>
 
                         {/* Charts and Map sections remain the same */}
-                        <div className='sec1'>
-                            <div className='column'>
-                                <div className='chartDataCol'>
-                                    <h5>Visitors Numbers</h5>
-                                    <div className='number'>1120</div>
-                                    <p>40% more than last month</p>
-                                </div>
-                                <div className='chart1'><img src={chart1} alt="" /></div>
-                            </div>
-                            <div className='column'>
-                                <BigCardTitle title="Users by country" />
-                                <div className='mapSecCont'>
-                                    <div className='mapDataSec'>
-                                        <div className='mapTitle'>
-                                            <h2>12.4 K</h2>
-                                            <div className='greenPer'><div>28.5%</div></div>
-                                        </div>
-                                        <div className='progressBarsCont'>
-                                            <ProgressBar country="United States" percentage={40} color="#FF6384" />
-                                            <ProgressBar country="Germany" percentage={25} color="#36A2EB" />
-                                        </div>
-                                    </div>
-                                    <div className='worldMap'><img src={WorldMap} alt="World Map" /></div>
-                                </div>
-                            </div>
-                        </div>
+<div className='sec1'>
+    <div className='column full-width-card'>
+        <BigCardTitle title="Users by country" />
+        <div className='mapLayoutContainer'>
+            {/* Left Side: Stats & Bars */}
+            <div className='mapStatsColumn'>
+                <div className='mapHeader'>
+                    <h2 className='largeNumber'>12.4 K</h2>
+                    <div className='greenPer'>28.5% ↗</div>
+                </div>
+                
+                {/* Your ProgressBar component works best when stacked like this */}
+                <div className='barsList'>
+                    <ProgressBar country="United States" percentage={30} color="#BF5AF2" />
+                    <ProgressBar country="United Kingdom" percentage={20} color="#6C80FF" />
+                    <ProgressBar country="Canada" percentage={20} color="#909CFE" />
+                    <ProgressBar country="Australia" percentage={15} color="#19DBFF" />
+                    <ProgressBar country="Spain" percentage={15} color="#D1D1D6" />
+                </div>
+            </div>
+
+            {/* Right Side: The Map */}
+            <div className='mapGraphicColumn'>
+                <img src={WorldMap} alt="World Map" className='worldMapImg' />
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div className='sec1 doubleChartRow'>
+    <div className='column'>
+        <BigCardTitle title="Traffic Sources" />
+        <div className='chartCenter'>
+            <DonutChart data={chartData1} />
+        </div>
+    </div>
+    <div className='column'>
+        <BigCardTitle title="Devices Overview" />
+        <div className='chartCenter'>
+            <DonutChart data={chartData2} />
+        </div>
+    </div>
+</div>
                     </div>
                 </div>
             </section>

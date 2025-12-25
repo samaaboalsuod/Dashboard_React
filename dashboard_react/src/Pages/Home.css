@@ -334,3 +334,50 @@ header{
     }
 
 }
+
+
+/* Layout for the Map Section */
+.mapLayoutContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-top: 20px;
+}
+
+.mapStatsColumn {
+    width: 40%; /* Space for your progress bars */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.mapGraphicColumn {
+    width: 55%; /* Space for the map image */
+    text-align: right;
+}
+
+.worldMapImg {
+    width: 100%;
+    height: auto;
+}
+
+/* Header styling for the 12.4K text */
+.mapHeader {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+/* Layout for the two Donut Charts side-by-side */
+.doubleChartRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.chartCenter {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
