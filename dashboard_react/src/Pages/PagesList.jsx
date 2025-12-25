@@ -11,39 +11,59 @@ import { supabase } from '../Supabase';
 const PagesList = () => {
     const [staticPages, setStaticPages] = useState([]);
     const [dynamicProjects, setDynamicProjects] = useState([]);
+    const [systemIcons, setSystemIcons] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-    const getStaticPages = async () => {
-        const { data, error } = await supabase.from('Pages').select('*');
-        if (error) console.error("Static Pages Error:", error);
-        if (data) setStaticPages(data);
-    };
+    // 1. Fetching Logic
+    const fetchData = async () => {
+        // Fetch Icons
+        const { data: iconsData } = await supabase.from('SystemIcons').select('*');
+        if (iconsData) setSystemIcons(iconsData);
 
-    const getDynamicProjects = async () => {
-        // Fetching Projects and joining Categories table
-        const { data, error } = await supabase
+        // Fetch Static Pages
+        const { data: pagesData } = await supabase.from('Pages').select('*');
+        if (pagesData) setStaticPages(pagesData);
+
+        // Fetch Dynamic Projects
+        const { data: projectsData } = await supabase
             .from('Projects')
-            .select(`*, Categories ( color )`); 
-            
-        if (error) console.error("Projects Error:", error);
-        
-        // Debugging the Color specifically
-        if (data && data.length > 0) {
-            console.log("Color Check for first project:", data[0].Categories);
-        }
-        
-        if (data) setDynamicProjects(data);
+            .select(`*, Categories ( color )`);
+        if (projectsData) setDynamicProjects(projectsData);
+
+        setLoading(false);
     };
 
     useEffect(() => {
-        getStaticPages();
-        getDynamicProjects();
+        fetchData();
     }, []);
 
+    // 2. Helper Functions (Defined here so they are available below)
     const formatDate = (dateString) => {
         if (!dateString) return "No Date";
         const date = new Date(dateString);
         return date.toLocaleDateString("en-US");
     };
+
+    const getIcon = (altName) => {
+        const found = systemIcons.find(icon => icon.alt === altName);
+        return found ? found.icon : "";
+    };
+
+    // 3. Delete Logic
+    const handleDelete = async (id, tableName, stateSetter) => {
+        const confirmDelete = window.confirm(`Permanently delete this from ${tableName}?`);
+        if (confirmDelete) {
+            const { error } = await supabase.from(tableName).delete().eq('id', id);
+            if (!error) {
+                stateSetter(prev => prev.filter(item => item.id !== id));
+                alert("Deleted successfully");
+            } else {
+                alert("Error: " + error.message);
+            }
+        }
+    };
+
+    if (loading) return <p style={{color: 'white'}}>Loading...</p>;
 
     return (
         <>
@@ -52,21 +72,12 @@ const PagesList = () => {
             </header>
 
             <section className='MainArea'>
-
                 <TheSideBar />
-
                 <div className='contentArea'>
-
                     <div className='AllContent'>
-
                         <PageTopCont />
-
                         <div className='overCardsCont'>
                             
-                            {staticPages.length === 0 && dynamicProjects.length === 0 && (
-                                <p style={{color: 'white'}}>Loading or No Data Found...</p>
-                            )}
-
                             {/* Group 1: Static Pages */}
                             {staticPages.map((page) => (
                                 <RecentCard
@@ -74,45 +85,36 @@ const PagesList = () => {
                                     image={page.Thumbnail || placeHoldImg}
                                     title={page.title || "Untitled"}
                                     category="Essentials"
-                                    // Make sure 'color' is the column name in your Pages table
                                     categoryColor={page.color || "#f1f1f1"} 
                                     slug={page.slug}
                                     projectState="Static"
                                     publishState={page.status}
                                     time={formatDate(page.created_at)}
+                                    icons={[getIcon("deleteIcon"), getIcon("peviewIcon"), getIcon("editIcon")]}
+                                    onDelete={() => handleDelete(page.id, 'Pages', setStaticPages)}
                                 />
                             ))}
 
-{/* Group 2: Dynamic Projects */}
-{dynamicProjects.map((proj) => (
-    <RecentCard
-        key={proj.id}
-        image={proj.Thumbnail || placeHoldImg}
-        title={proj.title || "Untitled Project"}
-        
-        // FIX: Match your 'Projects' table column name (lowercase 'c')
-        category={proj.category} 
-        
-        // FIX: Deeply check both Object and Array structures for the color
-        categoryColor={proj.Categories?.color || proj.Categories?.[0]?.color} 
-        
-        slug={proj.slug}
-        projectState="Dynamic"
-        
-        // FIX: Your DB already says "Unpublished". Just pass that string!
-        publishState={proj.status} 
-        
-        time={formatDate(proj.created_at)}
-    />
-))}
+                            {/* Group 2: Dynamic Projects */}
+                            {dynamicProjects.map((proj) => (
+                                <RecentCard
+                                    key={proj.id}
+                                    image={proj.Thumbnail || placeHoldImg}
+                                    title={proj.title || "Untitled Project"}
+                                    category={proj.category} 
+                                    categoryColor={proj.Categories?.color || proj.Categories?.[0]?.color} 
+                                    slug={proj.slug}
+                                    projectState="Dynamic"
+                                    publishState={proj.status} 
+                                    time={formatDate(proj.created_at)}
+                                    icons={[getIcon("deleteIcon"), getIcon("peviewIcon"), getIcon("editIcon")]}
+                                    onDelete={() => handleDelete(proj.id, 'Projects', setDynamicProjects)}
+                                />
+                            ))}
                         </div>
-
                     </div>
-
                 </div>
-
             </section>
-            
             <Footer />
         </>
     );

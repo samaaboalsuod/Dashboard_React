@@ -102,7 +102,7 @@
 /* 5. Actions column */
 .actionsCol {
   justify-content: flex-end;
-  gap: 14px;
+  gap: 1rem;
 }
 
 .statusBadge {
@@ -120,7 +120,7 @@
 .iconsWrap {
   display: flex;
   align-items: center;
-  gap: .7rem;
+  gap: 1rem;
   margin-left: 8px;
 }
 .actionIcon {

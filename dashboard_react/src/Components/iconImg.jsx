@@ -1,17 +1,13 @@
 import React from 'react';
 import './IconImg.css'
 
-const IconImg = ({ src, alt = "" }) => {
-
+// Added 'onClick' and 'style' to the props
+const IconImg = ({ src, alt = "", onClick, style }) => {
   return (
-    <div className='strokeICon'>
-
+    <div className='strokeICon' onClick={onClick} style={style}>
       <img src={src} alt={alt} />
-      
     </div>
-
-   )
-    
+  )
 }
 
 export default IconImg;

@@ -21,6 +21,7 @@ const TableCard = ({
   status,
   variant = "transparent",
   icons = [],
+  onDelete,
 }) => {
   return (
     <div className={`tableCard ${variant}`}>
@@ -52,9 +53,17 @@ const TableCard = ({
       <div className="col actionsCol">
         {status && <span className={`statusBadge ${status.toLowerCase()}`}>{status}</span>}
         <div className="iconsWrap">
-          {icons.map((src, i) => (
-            <img key={i} src={src} alt={`icon-${i}`} className="actionIcon"/>
-          ))}
+            {icons.map((src, i) => (
+                <img 
+                    key={i} 
+                    src={src} 
+                    alt={`icon-${i}`} 
+                    className="actionIcon"
+                    // If it's the 3rd icon (index 2), give it the delete function
+                    onClick={i === 2 ? onDelete : undefined} 
+                    style={{ cursor: i === 2 ? 'pointer' : 'default' }}
+                />
+            ))}
         </div>
       </div>
     </div>
