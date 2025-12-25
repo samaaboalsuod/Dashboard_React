@@ -21,8 +21,8 @@ const TheSideBar = () => {
         { path: "/PagesList", label: "Pages", icon: PagesIcon },
         { path: "/Messages", label: "E-mail", icon: MailIcon },
         { path: "/Categories", label: "Categories", icon: CateIcon },
-        { path: "/Calendar", label: "Calendar", icon: CalendarIcon },
-        { path: "/Chat", label: "Messages", icon: MessageIcon },
+        // { path: "/Calendar", label: "Calendar", icon: CalendarIcon },
+        // { path: "/Chat", label: "Messages", icon: MessageIcon },
         { path: "/Settings", label: "Settings", icon: SettingIcon },
     ];
 
@@ -33,10 +33,6 @@ const TheSideBar = () => {
                     <SideBar 
                         barIcon={item.icon} 
                         barAction={item.label} 
-                        /* This check handles exact matches. 
-                           If you want a tab to stay active for sub-pages, 
-                           use location.pathname.startsWith(item.path)
-                        */
                         isActive={location.pathname === item.path} 
                     />
                 </Link>
