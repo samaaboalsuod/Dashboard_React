@@ -33,6 +33,17 @@ const Categories = () => {
 
     useEffect(() => { getCategories(); }, []);
 
+    // NEW: Open modal with empty fields for Adding
+    const handleAddNewClick = () => {
+        setSelectedCategory({
+            id: null, // Critical: null ID tells the save function to "Insert"
+            title: "",
+            description: "",
+            Project_Numbers: ""
+        });
+        setIsModalOpen(true);
+    };
+
     // OPEN MODAL FOR EDIT
     const handleEditClick = (cat) => {
         setSelectedCategory({
@@ -44,25 +55,45 @@ const Categories = () => {
         setIsModalOpen(true);
     };
 
-    // SAVE UPDATE
-    const handleUpdate = async () => {
-        const { error } = await supabase
-            .from('Categories')
-            .update({
-                title: selectedCategory.title,
-                description: selectedCategory.description,
-                Project_Numbers: selectedCategory.Project_Numbers
-            })
-            .eq('id', selectedCategory.id);
-
-        if (!error) {
-            alert("Updated Successfully!");
-            setIsModalOpen(false);
-            getCategories(); 
-        } else {
-            alert("Error: " + error.message);
-        }
+    // SAVE LOGIC (Handles both Add and Update)
+const handleSave = async () => {
+    // 1. Prepare the data
+    const payload = {
+        title: selectedCategory.title,
+        description: selectedCategory.description,
+        Project_Numbers: selectedCategory.Project_Numbers
     };
+
+    // 2. Simple validation: don't allow empty titles
+    if (!payload.title.trim()) {
+        alert("Please enter a category title.");
+        return;
+    }
+
+    try {
+        if (selectedCategory.id) {
+            // UPDATE
+            const { error } = await supabase
+                .from('Categories')
+                .update(payload)
+                .eq('id', selectedCategory.id);
+            if (error) throw error;
+        } else {
+            // INSERT
+            const { error } = await supabase
+                .from('Categories')
+                .insert([payload]);
+            if (error) throw error;
+        }
+
+        // 3. Success UI updates
+        setIsModalOpen(false);
+        getCategories(); // Refresh list
+    } catch (error) {
+        console.error("Supabase Error:", error.message);
+        alert("Action failed: " + error.message);
+    }
+};
 
     const getIcon = (altName) => {
         const found = systemIcons.find(icon => icon.alt === altName);
@@ -76,7 +107,8 @@ const Categories = () => {
                 <TheSideBar />
                 <div className='contentArea'>
                     <div className='AllContent'>
-                        <CateTopCard /> 
+                        {/* Pass the add function here */}
+                        <CateTopCard onAddClick={handleAddNewClick} /> 
 
                         <div className='messCont'>
                             {categories.map((cat, index) => (
@@ -94,11 +126,13 @@ const Categories = () => {
                     </div>
                 </div>
 
-                {/* --- THE OVERLAY PANEL --- */}
+                {/* THE OVERLAY PANEL */}
                 {isModalOpen && (
                     <div className="modalOverlay">
                         <div className="editCategoryPanel">
-                            <h2 className='modalTitle'>Edit Category Panel</h2>
+                            <h2 className='modalTitle'>
+                                {selectedCategory.id ? "Edit Category Panel" : "Add Category Panel"}
+                            </h2>
                             
                             <div className="inputRow">
                                 <ShortInput 
@@ -123,9 +157,15 @@ const Categories = () => {
                             </div>
 
                             <div className="modalButtons">
-                                <button className="discardBtn" onClick={() => setIsModalOpen(false)}>Discard</button>
-                                <Button BtnText="Save Changes" onClick={handleUpdate} />
-                            </div>
+    <button className="discardBtn" onClick={() => setIsModalOpen(false)}>
+        Discard
+    </button>
+    
+    <Button 
+        BtnText={selectedCategory.id ? "Save Changes" : "Add Category"} 
+        onClick={handleSave} // <--- MAKE SURE THIS IS HERE
+    />
+</div>
                         </div>
                     </div>
                 )}
