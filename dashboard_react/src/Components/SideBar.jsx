@@ -4,12 +4,12 @@ import './SideBar.css'
 
 const SideBar = (props) => {
     return (
-      <div className={`sdieBar ${props.isActive ? 'active' : ''}`}>
-        <img src={props.barIcon} alt="barIcon" />
-        <h6>{props.barAction}</h6>
-      </div>
+        /* Changed 'sdieBar' to 'sideBarItem' to match your CSS mobile fix */
+        <div className={`sideBarItem ${props.isActive ? 'active' : ''}`}>
+            <img src={props.barIcon} alt="barIcon" />
+            <h6>{props.barAction}</h6>
+        </div>
     );
-  };
-  
+};
  
 export default SideBar;

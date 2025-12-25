@@ -1,20 +1,16 @@
-
-.sdieBar{
+.sideBarItem {
     width: 100%;
     background-color: transparent;
     padding: 1rem;
     border-radius: 4px;
-
     display: flex;
     gap: .5rem;
     justify-content: flex-start;
     align-items: center;
-
     transition: background-color 0.3s ease;
 }
 
-
-.sdieBar:hover,
-.sdieBar.active {
-    background-color: #E8E8E8;
+.sideBarItem:hover,
+.sideBarItem.active {
+    background-color: #E8E8E8; /* Active color */
 }
