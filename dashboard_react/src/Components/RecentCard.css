@@ -31,7 +31,8 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: .3rem;
+    gap: .5rem; 
+    flex-grow: 1; /* Pushes the row below to the bottom if needed */
 }
 
 .categoryTag {
@@ -73,10 +74,26 @@
 .state-unpublished { background-color: #fff3cd; color: #8a6d3b; } /* Soft Yellow/Gold */
 
 .iconRow {
+    width: 100%;
     display: flex;
-    gap: .5rem;
-    margin-top: 0.5rem;
+    gap: 0.8rem;
+    margin-top: auto; /* Ensures icons sit at the bottom of the card */
+    padding-top: 0.5rem;
+    width: 100%;
+    overflow: visible; /* Crucial to prevent cropping */
 }
+
+.iconRow img {
+    width: 38px;  /* Force the size */
+    height: 38px ;
+    padding: 8px;
+
+    border-radius: 8px;
+    object-fit: contain; /* Prevents icon distortion */
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
 
 
 @media (max-width: 1300px) {
