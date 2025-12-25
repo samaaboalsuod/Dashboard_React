@@ -5,8 +5,13 @@ import "./RecentCard.css";
 import IconImg from "./iconImg";
 
 const RecentCard = ({ image, title, category, time, slug, projectState, publishState, categoryColor, icons = [], onDelete, onEdit}) => {
+  
+  const validColor = typeof categoryColor === 'object' 
+    ? categoryColor.color || categoryColor.Hex 
+    : categoryColor;
+
  return (
-    <div className="recentCardCont" style={{ backgroundColor: categoryColor }}>
+    <div className="recentCardCont" style={{ backgroundColor: validColor || "#ffffff" }}>
       <img className="recImg" src={image} alt="" />
 
       <div className="recentData">
@@ -27,19 +32,20 @@ const RecentCard = ({ image, title, category, time, slug, projectState, publishS
 
         <p>{time}</p>
 
-<div className="iconRow">
-  {icons.map((src, i) => (
-    <IconImg 
-      key={i} 
-      src={src} 
-      onClick={() => {
-        if (i === 0) onDelete(); // First icon: Delete
-        if (i === 2) onEdit();   // Third icon: Edit
-      }} 
-      style={{ cursor: (i === 0 || i === 2) ? 'pointer' : 'default' }}
-    />
-  ))}
-</div>
+        <div className="iconRow">
+          {icons.map((src, i) => (
+            <IconImg 
+              key={i} 
+              src={src} 
+              onClick={() => {
+                // FIXED LOGIC:
+                if (i === 2) onEdit();  
+                if (i === 0) onDelete();  
+              }} 
+              style={{ cursor: (i === 0 || i === 2) ? 'pointer' : 'default' }}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

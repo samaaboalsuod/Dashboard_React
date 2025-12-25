@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../Supabase';
+import { createPortal } from 'react-dom';
 import './Messages.css';
 
 import Nav from '../Components/Nav';
@@ -14,9 +15,8 @@ import Button from '../Components/Button';
 const Categories = () => {
     const [categories, setCategories] = useState([]);
     const [systemIcons, setSystemIcons] = useState([]);
-    
-    // MODAL STATES
     const [isModalOpen, setIsModalOpen] = useState(false);
+    
     const [selectedCategory, setSelectedCategory] = useState({
         id: null,
         title: "",
@@ -24,6 +24,7 @@ const Categories = () => {
         Project_Numbers: ""
     });
 
+    // 1. GET (Read) - Working
     const getCategories = async () => {
         const { data } = await supabase.from('Categories').select('*');
         const { data: iconsData } = await supabase.from('SystemIcons').select('*');
@@ -33,18 +34,13 @@ const Categories = () => {
 
     useEffect(() => { getCategories(); }, []);
 
-    // NEW: Open modal with empty fields for Adding
+    // 2. CREATE (Setup)
     const handleAddNewClick = () => {
-        setSelectedCategory({
-            id: null, // Critical: null ID tells the save function to "Insert"
-            title: "",
-            description: "",
-            Project_Numbers: ""
-        });
+        setSelectedCategory({ id: null, title: "", description: "", Project_Numbers: "" });
         setIsModalOpen(true);
     };
 
-    // OPEN MODAL FOR EDIT
+    // 3. EDIT (Setup)
     const handleEditClick = (cat) => {
         setSelectedCategory({
             id: cat.id,
@@ -55,45 +51,34 @@ const Categories = () => {
         setIsModalOpen(true);
     };
 
-    // SAVE LOGIC (Handles both Add and Update)
-const handleSave = async () => {
-    // 1. Prepare the data
-    const payload = {
-        title: selectedCategory.title,
-        description: selectedCategory.description,
-        Project_Numbers: selectedCategory.Project_Numbers
-    };
+    // 4. SAVE (Handles both CREATE and EDIT)
+    const handleSave = async () => {
+        const payload = {
+            title: selectedCategory.title,
+            description: selectedCategory.description,
+            Project_Numbers: selectedCategory.Project_Numbers
+        };
 
-    // 2. Simple validation: don't allow empty titles
-    if (!payload.title.trim()) {
-        alert("Please enter a category title.");
-        return;
-    }
-
-    try {
         if (selectedCategory.id) {
             // UPDATE
-            const { error } = await supabase
-                .from('Categories')
-                .update(payload)
-                .eq('id', selectedCategory.id);
-            if (error) throw error;
+            await supabase.from('Categories').update(payload).eq('id', selectedCategory.id);
         } else {
-            // INSERT
-            const { error } = await supabase
-                .from('Categories')
-                .insert([payload]);
-            if (error) throw error;
+            // INSERT (Make sure your INSERT policy is active in Supabase!)
+            await supabase.from('Categories').insert([payload]);
         }
 
-        // 3. Success UI updates
         setIsModalOpen(false);
-        getCategories(); // Refresh list
-    } catch (error) {
-        console.error("Supabase Error:", error.message);
-        alert("Action failed: " + error.message);
-    }
-};
+        getCategories();
+    };
+
+    // 5. DELETE - Working
+    const handleDelete = async (id) => {
+        if (window.confirm("Are you sure you want to delete this category?")) {
+            const { error } = await supabase.from('Categories').delete().eq('id', id);
+            if (!error) getCategories();
+            else alert(error.message);
+        }
+    };
 
     const getIcon = (altName) => {
         const found = systemIcons.find(icon => icon.alt === altName);
@@ -107,7 +92,6 @@ const handleSave = async () => {
                 <TheSideBar />
                 <div className='contentArea'>
                     <div className='AllContent'>
-                        {/* Pass the add function here */}
                         <CateTopCard onAddClick={handleAddNewClick} /> 
 
                         <div className='messCont'>
@@ -119,15 +103,16 @@ const handleSave = async () => {
                                     count={cat.Project_Numbers}
                                     variant={index % 2 === 0 ? "transparent" : "grey"}
                                     icons={[getIcon("editIcon"), getIcon("peviewIcon"), getIcon("deleteIcon")]}
-                                    onEdit={() => handleEditClick(cat)} 
+                                    onEdit={() => handleEditClick(cat)}
+                                    onDelete={() => handleDelete(cat.id)} // Pass delete function
                                 />
                             ))}
                         </div>
                     </div>
                 </div>
 
-                {/* THE OVERLAY PANEL */}
-                {isModalOpen && (
+                {/* --- PORTAL MODAL --- */}
+                {isModalOpen && createPortal(
                     <div className="modalOverlay">
                         <div className="editCategoryPanel">
                             <h2 className='modalTitle'>
@@ -157,17 +142,15 @@ const handleSave = async () => {
                             </div>
 
                             <div className="modalButtons">
-    <button className="discardBtn" onClick={() => setIsModalOpen(false)}>
-        Discard
-    </button>
-    
-    <Button 
-        BtnText={selectedCategory.id ? "Save Changes" : "Add Category"} 
-        onClick={handleSave} // <--- MAKE SURE THIS IS HERE
-    />
-</div>
+                                <button className="discardBtn" onClick={() => setIsModalOpen(false)}>Discard</button>
+                                <Button 
+                                    BtnText={selectedCategory.id ? "Save Changes" : "Add Category"} 
+                                    onClick={handleSave} 
+                                />
+                            </div>
                         </div>
-                    </div>
+                    </div>,
+                    document.body
                 )}
             </section>
             <Footer />
